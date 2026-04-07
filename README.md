@@ -6,6 +6,6 @@
 
 ### 일정: 4월 6일 - 04월 13일 (진행 중)
 
-#### Website | [Components Storybook](https://2026-kit-storybook.dong-gyu.com/)
+#### Website | [Storybook](https://2026-keg-storybook.dong-gyu.com/)
 
 </div>
