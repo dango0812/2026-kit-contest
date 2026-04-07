@@ -1,5 +1,11 @@
-<div style="text-align: center;">
-    <h1>2026 KIT 공모전</h1>
-    <p><strong>주제:</strong> AI 활용 차세대 교육 솔루션</p>
-    <p><strong>일정: 4월 6일 - 04월 13일 (진행 중)</strong></p>
+<div align="center">
+
+# 2026 - KEG 공모전
+
+### 주제: AI 활용 차세대 교육 솔루션
+
+### 일정: 4월 6일 - 04월 13일 (진행 중)
+
+#### Website | [Storybook](https://2026-keg-storybook.dong-gyu.com/)
+
 </div>

@@ -10,7 +10,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['dist', '.pnp.*', '.yarn/', 'coverage', '**/*.d.ts'],
+    ignores: ['dist', 'storybook-static', '.storybook', '.pnp.*', '.yarn/', 'coverage', '**/*.d.ts'],
   },
 
   {
