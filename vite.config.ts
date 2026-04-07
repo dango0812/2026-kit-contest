@@ -1,13 +1,18 @@
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'node:path';
+import svgr from 'vite-plugin-svgr';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  plugins: [react(), vanillaExtractPlugin()],
+  plugins: [react(), vanillaExtractPlugin(), svgr()],
   resolve: {
     alias: {
-      '@': resolve(import.meta.dirname, 'src'),
+      '@': resolve(process.cwd(), 'src'),
+      '@pages': resolve(process.cwd(), 'src/pages'),
+      '@shared': resolve(process.cwd(), 'src/shared'),
+      '@constants': resolve(process.cwd(), 'src/constants'),
+      '@assets': resolve(process.cwd(), 'src/assets'),
     },
   },
   test: {
