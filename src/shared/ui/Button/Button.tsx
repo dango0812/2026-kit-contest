@@ -1,5 +1,6 @@
 import { IconLoader } from '@assets/icons';
 import type { RecipeVariants } from '@vanilla-extract/recipes';
+import clsx from 'clsx';
 import type { ButtonHTMLAttributes } from 'react';
 
 import { button, content, spinner, spinnerOverlay } from './Button.css';
@@ -13,6 +14,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   fullWidth?: boolean;
   /** 로딩 상태 (버튼 크기 유지, 스피너 표시) */
   loading?: boolean;
+  className?: string;
 };
 
 export function Button({
@@ -32,7 +34,7 @@ export function Button({
     <button
       {...rest}
       type={type}
-      className={button({ color, size, disabled: isDisabled, fullWidth })}
+      className={clsx(button({ color, size, disabled: isDisabled, fullWidth }), className)}
       disabled={isDisabled}
       aria-busy={loading || undefined}
       aria-disabled={isDisabled || undefined}
