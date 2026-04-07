@@ -89,7 +89,5 @@ export const textRecipe = recipe({
   },
   defaultVariants: {
     fontSize: 'body1',
-    fontWeight: 'medium',
-    lineHeight: 'medium',
   },
 });
