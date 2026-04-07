@@ -26,7 +26,7 @@ export interface TextProps {
  * @param {ReactNode} props.children - 텍스트 내용
  *
  * @example
- * <Text as="h1" fontSize="h1" fontWeight="bold" color={vars.colors.primary}>
+ * <Text as="h1" fontSize="h1" fontWeight="bold" color={vars.color.primary}>
  *   텍스트
  * </Text>
  */
