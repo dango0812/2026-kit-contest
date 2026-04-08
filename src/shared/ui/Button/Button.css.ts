@@ -5,7 +5,7 @@ import { recipe } from '@vanilla-extract/recipes';
 const HOVERED = '&:hover:not(:disabled):not([aria-disabled="true"])';
 const PRESSED = '&:active:not(:disabled):not([aria-disabled="true"])';
 
-export const button = recipe({
+export const buttonRecipe = recipe({
   base: {
     position: 'relative',
     display: 'inline-flex',
