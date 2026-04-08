@@ -1,23 +1,40 @@
-import { IconLoader } from '@assets/icons';
-import type { RecipeVariants } from '@vanilla-extract/recipes';
 import clsx from 'clsx';
 import type { ButtonHTMLAttributes } from 'react';
 
-import { button, content, spinner, spinnerOverlay } from './Button.css';
+import { Loader } from '../Loader';
+import type { Color, Size } from '../types';
 
-type ButtonVariants = NonNullable<RecipeVariants<typeof button>>;
+import { button, content, loaderOverlay } from './Button.css';
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  color?: ButtonVariants['color'];
-  size?: ButtonVariants['size'];
-  /** 부모 너비에 맞춤 */
+  /**
+   * 버튼의 색상을 지정합니다.
+   * @default 'primary'
+   */
+  color?: Color;
+  /**
+   * 버튼의 크기를 지정합니다.
+   * @default 'large'
+   */
+  size?: Size;
+  /**
+   * 값이 `true`라면 버튼이 부모 요소의 전체 너비를 차지합니다.
+   * @default false
+   */
   fullWidth?: boolean;
-  /** 로딩 상태 (버튼 크기 유지, 스피너 표시) */
+  /**
+   * 값이 `true`라면 버튼이 비활성화되고 로더가 표시됩니다.
+   * @default false
+   */
   loading?: boolean;
+  /**
+   * 추가적인 CSS 클래스를 지정합니다.
+   */
   className?: string;
 };
 
 export function Button({
+  type = 'button',
   color,
   size,
   fullWidth,
@@ -25,27 +42,27 @@ export function Button({
   disabled,
   className,
   children,
-  type = 'button',
   ...rest
 }: ButtonProps) {
   const isDisabled = disabled || loading;
 
   return (
     <button
-      {...rest}
       type={type}
+      {...rest}
       className={clsx(button({ color, size, disabled: isDisabled, fullWidth }), className)}
       disabled={isDisabled}
+      aria-label={typeof children === 'string' ? children : 'button'}
       aria-busy={loading || undefined}
-      aria-disabled={isDisabled || undefined}
     >
       <span className={content}>{children}</span>
-
       {loading && (
-        <span className={spinnerOverlay}>
-          <IconLoader className={spinner} aria-hidden="true" />
+        <span className={loaderOverlay}>
+          <Loader size={size} color="secondary" />
         </span>
       )}
     </button>
   );
 }
+
+Button.displayName = 'Button';

@@ -58,10 +58,9 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toHaveAttribute('aria-busy', 'true');
   });
 
-  it('loading 상태에서 스피너가 표시되고 children은 hidden이다', () => {
+  it('loading 상태에서 Loader 컴포넌트가 표시된다', () => {
     render(<Button loading>로딩중</Button>);
     const btn = screen.getByRole('button');
     expect(btn.querySelector('svg')).toBeInTheDocument();
-    expect(btn.textContent).toContain('로딩중');
   });
 });

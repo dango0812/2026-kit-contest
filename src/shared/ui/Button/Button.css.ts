@@ -1,5 +1,5 @@
 import { vars } from '@shared/styles';
-import { keyframes, style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 const HOVERED = '&:hover:not(:disabled):not([aria-disabled="true"])';
@@ -126,20 +126,10 @@ export const content = style({
   },
 });
 
-export const spinnerOverlay = style({
+export const loaderOverlay = style({
   position: 'absolute',
   inset: 0,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-});
-
-const spin = keyframes({
-  to: { transform: 'rotate(360deg)' },
-});
-
-export const spinner = style({
-  width: '1.25em',
-  height: '1.25em',
-  animation: `${spin} 0.6s linear infinite`,
 });
