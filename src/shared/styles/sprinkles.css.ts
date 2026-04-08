@@ -69,6 +69,12 @@ const colorProperties = defineProperties({
       error: vars.color.red[500],
       transparent: 'transparent',
     },
+    shadowColor: {
+      none: 'transparent',
+      light: vars.shadow.sm,
+      medium: vars.shadow.md,
+      strong: vars.shadow.lg,
+    },
   },
 });
 
