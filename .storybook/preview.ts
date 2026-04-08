@@ -3,6 +3,7 @@ import type { Preview } from '@storybook/react';
 import '../src/shared/styles/global.css';
 
 const preview: Preview = {
+  tags: ['autodocs'],
   parameters: {
     controls: {
       matchers: {
