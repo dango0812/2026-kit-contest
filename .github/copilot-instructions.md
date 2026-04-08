@@ -1,27 +1,5 @@
-## 커밋 컨벤션
-
-- `type: 한국어로 간결하게 핵심 설명`
-- 변경 사항이 여러 개면 bullet로 간략히 나열 (파일명이 아닌, 변경 사항을 설명)
-- 예시:
-  - `chore: Storybook main, preview 설정 추가\n- stories 경로 설정\n- 글로벌 스타일 import`
-
-## 요구사항
-
-1. 커밋 전에는 변경된 파일과 변경된 내용에 초점을 맞추어 작성해주세요.
-2. 커밋 메시지는 변경 사항을 명확하게 설명하는 것이 중요합니다. 변경된 파일명보다는 변경된 내용에 초점을 맞추어 작성해주세요.
-3. 커밋 메시지는 `type: description` 형식을 따르며, `type`은 변경 사항의 유형을 나타냅니다. GitHub에서 자주 사용되는 `type` 예시는 다음과 같습니다:
-   - `feat`: 새로운 기능 추가
-   - `fix`: 버그 수정
-   - `docs`: 문서 변경
-   - `style`: 코드 스타일 변경 (포맷팅, 세미콜론 누락 등)
-   - `refactor`: 코드 리팩토링 (기능 변경 없이 코드 구조 개선)
-   - `test`: 테스트 추가 또는 수정 (한 번에 올리지 않고, 테스트 관련 변경 사항만 따로 커밋하는 경우)
-   - `chore`: 빌드 업무 수정, 패키지 매니저 설정 등 기타 변경 사항
-4. git add 명령어로 스테이징할 수 있도록 변경된 파일, 항목별 묶어서 커맨드를 같이 전달해주세요. 예시:
-   - `git add .storybook/main.ts .storybook/preview.ts`
-5. pull_request_template 파일 기반으로 PR 설명 작성해주세요.
-
-- PR 제목
-- PR What에 볼렛으로 설명
-- PR What 볼렛으로 해결되지 않고, 자세히 설명이 필요한 경우 Description 섹션에 내용 설명
-- PR Checklist 섹션에 해당하는 항목 체크
+#file:./rules/web-design-guidelines.md
+#file:./rules/commit-message.md
+#file:./pull_request_template.md
+./rules/react-best-practices기반으로 React 컴포넌트 작성 시, 최적화 진행
+./rules/fundamentals에 있는 코드는 최적화할 때 참고
