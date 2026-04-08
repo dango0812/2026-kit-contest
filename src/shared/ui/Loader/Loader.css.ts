@@ -1,17 +1,13 @@
 import { vars } from '@shared/styles';
-import { keyframes } from '@vanilla-extract/css';
+import { animationSpin } from '@shared/styles/animations';
 import { recipe } from '@vanilla-extract/recipes';
 
-const spin = keyframes({
-  to: { transform: 'rotate(360deg)' },
-});
-
-export const loader = recipe({
+export const loaderRecipe = recipe({
   base: {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    animationName: spin,
+    animationName: animationSpin,
     animationTimingFunction: 'linear',
     animationIterationCount: 'infinite',
     animationDuration: '1000ms',

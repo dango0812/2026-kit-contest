@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import type { Color, Size } from '../types';
 
-import { loader } from './Loader.css';
+import { loaderRecipe } from './Loader.css';
 
 export interface LoaderProps {
   /**
@@ -30,7 +30,7 @@ export interface LoaderProps {
 export function Loader({ size, color, duration = 1000, className }: LoaderProps) {
   return (
     <IconLoader
-      className={clsx(loader({ size, color }), className)}
+      className={clsx(loaderRecipe({ size, color }), className)}
       style={{ animationDuration: `${duration}ms` }}
       aria-hidden="true"
     />
