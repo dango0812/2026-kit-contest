@@ -6,7 +6,7 @@ import type { Color, Size } from '../types';
 
 import { button, content, loaderOverlay } from './Button.css';
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * 버튼의 색상을 지정합니다.
    * @default 'primary'
@@ -31,7 +31,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
    * 추가적인 CSS 클래스를 지정합니다.
    */
   className?: string;
-};
+}
 
 export function Button({
   type = 'button',
