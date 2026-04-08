@@ -3,7 +3,7 @@ import type { ElementType, HTMLAttributes } from 'react';
 
 import type { Color } from '../types';
 
-import { cardRecipe } from './Card.css';
+import { cardRecipe } from './styles.css';
 
 type CardRecipeProps = NonNullable<Parameters<typeof cardRecipe>[0]>;
 

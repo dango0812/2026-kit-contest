@@ -4,7 +4,7 @@ import type { ButtonHTMLAttributes } from 'react';
 import { Loader } from '../Loader';
 import type { Color, Size } from '../types';
 
-import { buttonRecipe, content, loaderOverlay } from './Button.css';
+import { buttonRecipe, content, loaderOverlay } from './styles.css';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**

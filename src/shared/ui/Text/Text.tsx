@@ -1,7 +1,7 @@
 import type { RecipeVariants } from '@vanilla-extract/recipes';
 import type { ElementType, ReactNode } from 'react';
 
-import { textRecipe } from './Text.css';
+import { textRecipe } from './styles.css';
 
 type TextVariants = NonNullable<RecipeVariants<typeof textRecipe>>;
 

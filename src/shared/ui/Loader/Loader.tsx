@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import type { Color, Size } from '../types';
 
-import { loaderRecipe } from './Loader.css';
+import { loaderRecipe } from './styles.css';
 
 export interface LoaderProps {
   /**

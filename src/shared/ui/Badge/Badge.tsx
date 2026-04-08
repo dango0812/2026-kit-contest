@@ -4,7 +4,7 @@ import type { HTMLAttributes } from 'react';
 
 import type { Color, Size } from '../types';
 
-import { badgeRecipe, dotRecipe } from './Badge.css';
+import { badgeRecipe, dotRecipe } from './styles.css';
 
 type BadgeVariants = NonNullable<Parameters<typeof badgeRecipe>[0]>['variant'];
 
