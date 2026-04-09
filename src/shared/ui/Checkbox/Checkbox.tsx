@@ -1,9 +1,8 @@
 import { type CSSProperties, type KeyboardEvent, useMemo } from 'react';
 
+import { IconCheck } from '@assets/icons';
+import { useBoolean } from '@shared/hooks/useBoolean';
 import clsx from 'clsx';
-
-import { IconCheck } from '@/assets/icons';
-import { useBoolean } from '@/shared/hooks/useBoolean';
 
 import type { CheckboxControlProps, CheckboxProps } from './types';
 import { CheckboxContext, useCheckbox } from './useCheckbox';
