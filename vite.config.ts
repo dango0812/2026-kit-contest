@@ -11,6 +11,7 @@ export default defineConfig({
       '@': resolve(process.cwd(), 'src'),
       '@pages': resolve(process.cwd(), 'src/pages'),
       '@shared': resolve(process.cwd(), 'src/shared'),
+      '@providers': resolve(process.cwd(), 'src/providers'),
       '@constants': resolve(process.cwd(), 'src/constants'),
       '@assets': resolve(process.cwd(), 'src/assets'),
     },
