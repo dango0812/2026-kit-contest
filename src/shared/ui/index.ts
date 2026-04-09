@@ -5,3 +5,4 @@ export * from './Checkbox';
 export * from './Flex';
 export * from './Loader';
 export * from './Text';
+export * from './Toast';
