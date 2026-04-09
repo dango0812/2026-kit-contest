@@ -61,7 +61,7 @@ const SCALE: Array<{ fontSize: NonNullable<Parameters<typeof Text>[0]['fontSize'
   { fontSize: 'caption', label: 'Caption · 12px Regular' },
 ];
 
-export const Default: Story = {
+export const Primary: Story = {
   args: {
     children: '텍스트 컴포넌트',
     fontSize: 'body1',
