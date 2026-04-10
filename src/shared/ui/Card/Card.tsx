@@ -3,9 +3,9 @@ import type { ElementType, HTMLAttributes } from 'react';
 
 import type { Color } from '../types';
 
-import { cardRecipe } from './styles.css';
+import * as styles from './styles.css';
 
-type CardRecipeProps = NonNullable<Parameters<typeof cardRecipe>[0]>;
+type CardRecipeProps = NonNullable<Parameters<typeof styles.cardRecipe>[0]>;
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -48,7 +48,7 @@ export function Card({
   ...rest
 }: CardProps) {
   return (
-    <Component className={clsx(cardRecipe({ color, variant, rounded, shadow }), className)} {...rest}>
+    <Component className={clsx(styles.cardRecipe({ color, variant, rounded, shadow }), className)} {...rest}>
       {children}
     </Component>
   );

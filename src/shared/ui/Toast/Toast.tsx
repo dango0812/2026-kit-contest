@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 import { Text } from '../Text';
 import type { ToastProps } from './types';
 
-import { closeButton, toastRecipe } from './styles.css';
+import * as styles from './styles.css';
 
 export function Toast({
   isOpen,
@@ -38,13 +38,13 @@ export function Toast({
   };
 
   return createPortal(
-    <div role="status" aria-live="polite" aria-atomic="true" className={toastRecipe({ position, color })}>
+    <div role="status" aria-live="polite" aria-atomic="true" className={styles.toastRecipe({ position, color })}>
       <Text as="span" fontSize="body2">
         {message}
       </Text>
       <button
         type="button"
-        className={closeButton}
+        className={styles.closeButton}
         onClick={onClose}
         onKeyDown={handleKeyDown}
         aria-label="토스트 닫기"

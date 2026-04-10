@@ -4,7 +4,7 @@ import type { ButtonHTMLAttributes } from 'react';
 import { Loader } from '../Loader';
 import type { Color, Size } from '../types';
 
-import { buttonRecipe, content, loaderOverlay } from './styles.css';
+import * as styles from './styles.css';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
@@ -50,14 +50,14 @@ export function Button({
     <button
       type={type}
       {...rest}
-      className={clsx(buttonRecipe({ color, size, disabled: isDisabled, fullWidth }), className)}
+      className={clsx(styles.buttonRecipe({ color, size, disabled: isDisabled, fullWidth }), className)}
       disabled={isDisabled}
       aria-label={typeof children === 'string' ? children : 'button'}
       aria-busy={loading || undefined}
     >
-      <span className={content}>{children}</span>
+      <span className={styles.content}>{children}</span>
       {loading && (
-        <span className={loaderOverlay}>
+        <span className={styles.loaderOverlay}>
           <Loader size={size} color="secondary" />
         </span>
       )}

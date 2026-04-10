@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import type { CheckboxControlProps, CheckboxProps } from './types';
 import { CheckboxContext, useCheckbox } from './useCheckbox';
 
-import { checkIconRecipe, indicatorRecipe, wrapper } from './styles.css';
+import * as styles from './styles.css';
 
 const DASH_TOTAL = 22;
 
@@ -55,7 +55,7 @@ export function Checkbox({
 
   return (
     <CheckboxContext.Provider value={value}>
-      <div className={clsx(wrapper, className)} {...rest}>
+      <div className={clsx(styles.wrapper, className)} {...rest}>
         {children}
       </div>
     </CheckboxContext.Provider>
@@ -86,11 +86,11 @@ function CheckboxIndicator({ shape, className, showAnimation = true, ...rest }: 
       disabled={disabled}
       onClick={handleToggle}
       onKeyDown={handleKeyDown}
-      className={clsx(indicatorRecipe({ shape, color, checked, disabled }), className)}
+      className={clsx(styles.indicatorRecipe({ shape, color, checked, disabled }), className)}
       {...rest}
     >
       <IconCheck
-        className={checkIconRecipe({ animation: showAnimation ? 'draw' : 'none', checked })}
+        className={styles.checkIconRecipe({ animation: showAnimation ? 'draw' : 'none', checked })}
         style={showAnimation ? (checked ? DRAW_VISIBLE : DRAW_HIDDEN) : undefined}
         aria-hidden
       />

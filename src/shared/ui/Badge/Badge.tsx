@@ -4,9 +4,9 @@ import type { HTMLAttributes } from 'react';
 
 import type { Color, Size } from '../types';
 
-import { badgeRecipe, dotRecipe } from './styles.css';
+import * as styles from './styles.css';
 
-type BadgeVariants = NonNullable<Parameters<typeof badgeRecipe>[0]>['variant'];
+type BadgeVariants = NonNullable<Parameters<typeof styles.badgeRecipe>[0]>['variant'];
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   /**
@@ -38,12 +38,12 @@ export function Badge({ color, size, variant, dot = false, className, children, 
     <span
       className={clsx(
         sprinkles({ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8' }),
-        badgeRecipe({ color, size, variant }),
+        styles.badgeRecipe({ color, size, variant }),
         className,
       )}
       {...rest}
     >
-      {dot && <span className={dotRecipe({ color, size, variant })} aria-hidden={true} />}
+      {dot && <span className={styles.dotRecipe({ color, size, variant })} aria-hidden={true} />}
       {children}
     </span>
   );

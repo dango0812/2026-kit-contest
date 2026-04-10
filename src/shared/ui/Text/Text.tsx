@@ -1,9 +1,9 @@
 import type { RecipeVariants } from '@vanilla-extract/recipes';
 import type { ElementType, ReactNode } from 'react';
 
-import { textRecipe } from './styles.css';
+import * as styles from './styles.css';
 
-type TextVariants = NonNullable<RecipeVariants<typeof textRecipe>>;
+type TextVariants = NonNullable<RecipeVariants<typeof styles.textRecipe>>;
 
 export interface TextProps {
   /**
@@ -39,7 +39,7 @@ export interface TextProps {
 export function Text({ as: Component = 'p', fontSize, fontWeight, lineHeight, color, children, ...rest }: TextProps) {
   return (
     <Component
-      className={textRecipe({ fontSize, fontWeight, lineHeight })}
+      className={styles.textRecipe({ fontSize, fontWeight, lineHeight })}
       style={{ ...(color && { color }) }}
       {...rest}
     >
