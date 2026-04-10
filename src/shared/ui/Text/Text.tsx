@@ -1,11 +1,12 @@
 import type { RecipeVariants } from '@vanilla-extract/recipes';
-import type { ElementType, ReactNode } from 'react';
+import clsx from 'clsx';
+import type { ElementType, HTMLAttributes, ReactNode } from 'react';
 
 import * as styles from './styles.css';
 
 type TextVariants = NonNullable<RecipeVariants<typeof styles.textRecipe>>;
 
-export interface TextProps {
+export interface TextProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   /**
    * 렌더링할 HTML 태그를 지정합니다.
    * @default 'p'
@@ -36,10 +37,19 @@ export interface TextProps {
   children: ReactNode;
 }
 
-export function Text({ as: Component = 'p', fontSize, fontWeight, lineHeight, color, children, ...rest }: TextProps) {
+export function Text({
+  as: Component = 'p',
+  fontSize,
+  fontWeight,
+  lineHeight,
+  color,
+  children,
+  className,
+  ...rest
+}: TextProps) {
   return (
     <Component
-      className={styles.textRecipe({ fontSize, fontWeight, lineHeight })}
+      className={clsx(styles.textRecipe({ fontSize, fontWeight, lineHeight }), className)}
       style={{ ...(color && { color }) }}
       {...rest}
     >

@@ -1,6 +1,7 @@
 import { type CSSProperties, type PropsWithChildren } from 'react';
 
 import { Flex, Text } from '@shared/ui';
+import clsx from 'clsx';
 
 import * as styles from './styles.css';
 
@@ -40,19 +41,19 @@ function MobileFrameBase({ children, header, width = 375, height = 700 }: FrameP
     </Flex>
   );
 }
-function Notch({ children, ...rest }: PropsWithChildren) {
+function Notch({ children, className, ...rest }: PropsWithChildren & { className?: string }) {
   return (
-    <div className={styles.notch} {...rest}>
+    <div className={clsx(styles.notch, className)} {...rest}>
       {children}
     </div>
   );
 }
 
-function Content({ children, ...rest }: PropsWithChildren) {
+function Content({ children, className, ...rest }: PropsWithChildren & { className?: string }) {
   return (
-    <main className={styles.content} {...rest}>
+    <div className={clsx(styles.content, className)} {...rest}>
       {children}
-    </main>
+    </div>
   );
 }
 

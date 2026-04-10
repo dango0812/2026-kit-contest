@@ -1,4 +1,5 @@
 import { type Sprinkles, sprinkles } from '@shared/styles';
+import clsx from 'clsx';
 import type { ElementType, HTMLAttributes } from 'react';
 
 type FlexSprinkles = Pick<
@@ -78,23 +79,27 @@ export function Flex({
   flexGrow,
   flexShrink,
   textAlign,
+  className,
   children,
   ...rest
 }: FlexProps) {
   return (
     <Component
-      className={sprinkles({
-        display: 'flex',
-        flexDirection: direction,
-        alignItems: align,
-        justifyContent: justify,
-        gap: gap,
-        borderRadius: rounded,
-        flexWrap: flexWrap,
-        flexGrow: flexGrow,
-        flexShrink: flexShrink,
-        textAlign: textAlign,
-      })}
+      className={clsx(
+        sprinkles({
+          display: 'flex',
+          flexDirection: direction,
+          alignItems: align,
+          justifyContent: justify,
+          gap: gap,
+          borderRadius: rounded,
+          flexWrap: flexWrap,
+          flexGrow: flexGrow,
+          flexShrink: flexShrink,
+          textAlign: textAlign,
+        }),
+        className,
+      )}
       {...rest}
     >
       {children}
