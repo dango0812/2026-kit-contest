@@ -1,5 +1,13 @@
-#file:./rules/web-design-guidelines.md
-#file:./rules/commit-message.md
-#file:./pull_request_template.md
-./rules/react-best-practices기반으로 React 컴포넌트 작성 시, 최적화 진행
-./rules/fundamentals에 있는 코드는 최적화할 때 참고
+# 답변 시 파일 참고
+
+# file: ./rules/web-design-guidelines.md
+
+# file: ./rules/commit-message.md
+
+# file: ./pull_request_template.md
+
+# file: ./etc.md 내용을 참고할 것
+
+# ./rules/react-best-practices 내용은 컴포넌트 작성 및 최적화할 때 사용
+
+# ./rules/fundamentals 내용은 컴포넌트 작성 및 최적화할 때 사용
