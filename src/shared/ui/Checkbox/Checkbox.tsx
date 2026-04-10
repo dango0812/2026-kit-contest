@@ -1,4 +1,4 @@
-import { type CSSProperties, type KeyboardEvent, useMemo } from 'react';
+import { type CSSProperties, type KeyboardEvent, useCallback, useMemo } from 'react';
 
 import { IconCheck } from '@assets/icons';
 import { useBoolean } from '@shared/hooks/useBoolean';
@@ -35,7 +35,7 @@ export function Checkbox({
 }: CheckboxProps) {
   const { value: isChecked, handleToggle: onToggle } = useBoolean(defaultChecked);
 
-  const handleToggle = () => {
+  const handleToggle = useCallback(() => {
     if (disabled) {
       return;
     }
@@ -44,13 +44,13 @@ export function Checkbox({
       onToggle();
     }
 
-    onChange?.(!(checked ?? isChecked));
-  };
+    const currentChecked = checked ?? isChecked;
+    onChange?.(!currentChecked);
+  }, [disabled, checked, isChecked, onToggle, onChange]);
 
   const value = useMemo(
     () => ({ checked: checked ?? isChecked, disabled, color, handleToggle }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [checked, isChecked, disabled, color],
+    [checked, isChecked, disabled, color, handleToggle],
   );
 
   return (
@@ -63,8 +63,15 @@ export function Checkbox({
 }
 
 interface CheckboxIndicatorProps extends CheckboxControlProps {
+  /**
+   * 체크박스의 모양 지정
+   * @default 'squircle'
+   */
   shape: 'squircle' | 'circle' | 'line';
-  /** draw 애니메이션 사용 여부. Line variant는 false로 고정됩니다. @default true */
+  /** draw 애니메이션 사용 여부
+   * Line variant는 false로 고정됩니다.
+   * @default true
+   * */
   showAnimation?: boolean;
 }
 
