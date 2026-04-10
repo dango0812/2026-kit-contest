@@ -16,7 +16,7 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   color?: Color;
   /**
    * 배지의 크기를 지정합니다.
-   * @default 'medium'
+   * @default 'large'
    */
   size?: Size;
   /**

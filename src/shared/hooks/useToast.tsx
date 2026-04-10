@@ -18,8 +18,8 @@ export const ToastContext = createContext<ShowToast | null>(null);
  * @example
  * const showToast = useToast();
  *
- * showToast('성공 메시지', { color: 'green' });
- * showToast('에러 메시지', { color: 'red', position: "top-right"});
+ * showToast('성공 메시지', { color: 'success' });
+ * showToast('에러 메시지', { color: 'error', position: "top-right"});
  * showToast('사라지지 않는 메시지', { delay: 0 });
  * showToast.close(); // 현재 표시중인 토스트를 닫습니다.
  */

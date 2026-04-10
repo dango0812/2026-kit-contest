@@ -41,6 +41,7 @@ export const Colors: Story = {
   render: args => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
       <Loader {...args} color="primary" />
+      <Loader {...args} color="secondary" />
       <Loader {...args} color="success" />
       <Loader {...args} color="error" />
       <Loader {...args} color="warning" />
