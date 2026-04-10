@@ -196,9 +196,10 @@ export const vars = createGlobalTheme(':root', {
     frame: '20px',
   },
   shadow: {
-    sm: '0 1px 2px rgba(0, 0, 0, 0.05)',
-    md: '0 2px 8px rgba(0, 0, 0, 0.08)',
-    lg: '0 4px 16px rgba(0, 0, 0, 0.12)',
+    none: 'none',
+    sm: '0 2px 8px rgba(0, 0, 0, 0.10)',
+    md: '0 4px 16px rgba(0, 0, 0, 0.16)',
+    lg: '0 8px 24px rgba(0, 0, 0, 0.20)',
   },
   zIndex: {
     hide: '-1',
