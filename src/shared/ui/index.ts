@@ -5,5 +5,6 @@ export * from './Checkbox';
 export * from './Container';
 export * from './Flex';
 export * from './Loader';
+export * from './Lottie';
 export * from './Text';
 export * from './Toast';
