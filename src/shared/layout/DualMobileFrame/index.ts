@@ -1,0 +1,1 @@
+export { DualMobileFrame } from './DualMobileFrame';

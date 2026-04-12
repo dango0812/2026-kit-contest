@@ -1,20 +1,40 @@
-import { StrictMode } from 'react';
+import { lazy, StrictMode } from 'react';
 
+import { ROUTES } from '@constants/routes';
+import { ToastProvider } from '@providers/ToastProvider';
+import { RootLayout } from '@shared/layout/RootLayout';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-
-import { ToastProvider } from '@/providers/ToastProvider';
-
-import App from './App';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import '@shared/styles/global.css';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
+const HomePage = lazy(() => import('@pages/home/page'));
+const NotFoundPage = lazy(() => import('@pages/404/page'));
+
+const router = createBrowserRouter([
+  {
+    path: ROUTES.HOME,
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
+      },
+    ],
+  },
+]);
+
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  createRoot(rootElement).render(
+    <StrictMode>
       <ToastProvider>
-        <App />
+        <RouterProvider router={router} />
       </ToastProvider>
-    </BrowserRouter>
-  </StrictMode>,
-);
+    </StrictMode>,
+  );
+}
