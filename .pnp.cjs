@@ -60,6 +60,7 @@ const RAW_RUNTIME_STATE =
           ["husky", "npm:9.1.7"],\
           ["jsdom", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:26.1.0"],\
           ["lint-staged", "npm:15.5.2"],\
+          ["lottie-web", "npm:5.13.0"],\
           ["prettier", "npm:3.8.1"],\
           ["react", "npm:19.2.4"],\
           ["react-dom", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:19.2.4"],\
@@ -110,6 +111,7 @@ const RAW_RUNTIME_STATE =
           ["husky", "npm:9.1.7"],\
           ["jsdom", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:26.1.0"],\
           ["lint-staged", "npm:15.5.2"],\
+          ["lottie-web", "npm:5.13.0"],\
           ["prettier", "npm:3.8.1"],\
           ["react", "npm:19.2.4"],\
           ["react-dom", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:19.2.4"],\
@@ -5853,6 +5855,15 @@ const RAW_RUNTIME_STATE =
           ["slice-ansi", "npm:7.1.2"],\
           ["strip-ansi", "npm:7.2.0"],\
           ["wrap-ansi", "npm:9.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["lottie-web", [\
+      ["npm:5.13.0", {\
+        "packageLocation": "./.yarn/cache/lottie-web-npm-5.13.0-eada0c2e04-b463ad4621.zip/node_modules/lottie-web/",\
+        "packageDependencies": [\
+          ["lottie-web", "npm:5.13.0"]\
         ],\
         "linkType": "HARD"\
       }]\
