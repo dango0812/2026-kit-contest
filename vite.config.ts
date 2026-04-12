@@ -10,6 +10,7 @@ export default defineConfig({
     alias: {
       '@': resolve(process.cwd(), 'src'),
       '@pages': resolve(process.cwd(), 'src/pages'),
+      '@features': resolve(process.cwd(), 'src/features'),
       '@shared': resolve(process.cwd(), 'src/shared'),
       '@providers': resolve(process.cwd(), 'src/providers'),
       '@constants': resolve(process.cwd(), 'src/constants'),
