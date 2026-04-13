@@ -21,7 +21,7 @@ export function TopicSelect({ onBack, onSelect }: TopicSelectProps) {
       </TopBar>
 
       <Flex direction="column" gap="10" className={styles.topSection}>
-        <Text as="h1" fontSize="h6" fontWeight="bold" role="heading">
+        <Text as="h2" fontSize="h6" fontWeight="bold" role="heading">
           학습 주제 선택
         </Text>
         <Text as="p" fontSize="body1" lineHeight="large" color={vars.color.grey[600]} className={styles.textPreLine}>

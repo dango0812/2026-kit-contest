@@ -156,7 +156,7 @@ export function CaseBriefing({ isHost, onStartMission }: CaseBriefingProps) {
           <Text as="span" fontSize="body1" fontWeight="medium" color={vars.color.grey[600]}>
             오늘의 사건
           </Text>
-          <Text as="h1" fontSize="h6" fontWeight="bold" role="heading" style={{ color: 'inherit' }}>
+          <Text as="h2" fontSize="h6" fontWeight="bold" role="heading" style={{ color: 'inherit' }}>
             {briefing.caseTitle}
           </Text>
           <Text as="p" fontSize="body2" style={{ color: 'inherit', opacity: 0.9, marginTop: '10px' }}>

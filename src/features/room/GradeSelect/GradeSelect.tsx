@@ -21,7 +21,7 @@ export function GradeSelect({ onBack, onSelect }: GradeSelectProps) {
       </TopBar>
 
       <Flex direction="column">
-        <Text as="h1" fontSize="h6" fontWeight="bold" role="heading">
+        <Text as="h2" fontSize="h6" fontWeight="bold" role="heading">
           학년 선택
         </Text>
         <Text as="p" fontSize="body1" lineHeight="large" color={vars.color.grey[600]}>

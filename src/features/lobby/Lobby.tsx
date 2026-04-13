@@ -14,7 +14,7 @@ export function Lobby({ onCreateRoom, onJoinRoom }: LobbyProps) {
   return (
     <Flex direction="column" justify="center" gap="40" className={styles.lobbyWrapper}>
       <Flex direction="column" gap="10">
-        <Text as="h1" fontSize="h6" fontWeight="bold" role="heading">
+        <Text as="h2" fontSize="h6" fontWeight="bold" role="heading">
           KIT 수사대
         </Text>
         <Text as="p" fontSize="body1" lineHeight="large" color={vars.color.grey[600]} className={styles.textPreLine}>

@@ -69,7 +69,7 @@ export function JoinRoom({ onBack, onJoin }: JoinRoomProps) {
       </TopBar>
 
       <Flex direction="column" gap="24">
-        <Text as="h1" fontSize="h6" fontWeight="bold" role="heading">
+        <Text as="h2" fontSize="h6" fontWeight="bold" role="heading">
           수사대 합류
         </Text>
 

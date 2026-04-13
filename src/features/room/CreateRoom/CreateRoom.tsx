@@ -75,7 +75,7 @@ export function CreateRoom({ onBack, onLeave, onStartInvestigation, isParticipan
 
       <Flex direction="column" gap="20">
         <Flex direction="column" gap="4">
-          <Text as="h1" fontSize="h6" fontWeight="bold" role="heading">
+          <Text as="h2" fontSize="h6" fontWeight="bold" role="heading">
             수사대 모집 중
           </Text>
           {description ? (
