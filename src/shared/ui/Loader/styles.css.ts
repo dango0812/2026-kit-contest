@@ -24,7 +24,7 @@ export const loaderRecipe = recipe({
       large: { width: '26px', height: '26px' },
     },
     color: {
-      primary: { color: vars.color.blue[500] },
+      primary: { color: vars.color.green[500] },
       secondary: { color: vars.color.grey[500] },
       success: { color: vars.color.green[500] },
       error: { color: vars.color.red[500] },

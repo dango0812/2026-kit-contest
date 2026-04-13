@@ -26,7 +26,7 @@ export const indicatorRecipe = recipe({
     backgroundColor: vars.color.white,
     color: vars.color.white,
     ':focus-visible': {
-      outline: `2px solid ${vars.color.blue[400]}`,
+      outline: `2px solid ${vars.color.green[400]}`,
       outlineOffset: 2,
     },
   },
@@ -55,11 +55,11 @@ export const indicatorRecipe = recipe({
     // Checked
     {
       variants: { shape: 'squircle', checked: true, disabled: false },
-      style: { backgroundColor: vars.color.blue[500], borderColor: vars.color.blue[500] },
+      style: { backgroundColor: vars.color.green[500], borderColor: vars.color.green[500] },
     },
     {
       variants: { shape: 'circle', checked: true, disabled: false },
-      style: { backgroundColor: vars.color.blue[500], borderColor: vars.color.blue[500] },
+      style: { backgroundColor: vars.color.green[500], borderColor: vars.color.green[500] },
     },
 
     // Disabled
@@ -73,16 +73,16 @@ export const indicatorRecipe = recipe({
     },
     {
       variants: { shape: 'squircle', checked: true, disabled: true },
-      style: { backgroundColor: vars.color.blue[200], borderColor: vars.color.blue[200] },
+      style: { backgroundColor: vars.color.green[200], borderColor: vars.color.green[200] },
     },
     {
       variants: { shape: 'circle', checked: true, disabled: true },
-      style: { backgroundColor: vars.color.blue[200], borderColor: vars.color.blue[200] },
+      style: { backgroundColor: vars.color.green[200], borderColor: vars.color.green[200] },
     },
 
     // Line checked
-    { variants: { shape: 'line', checked: true, disabled: false }, style: { color: vars.color.blue[500] } },
-    { variants: { shape: 'line', checked: true, disabled: true }, style: { color: vars.color.blue[200] } },
+    { variants: { shape: 'line', checked: true, disabled: false }, style: { color: vars.color.green[500] } },
+    { variants: { shape: 'line', checked: true, disabled: true }, style: { color: vars.color.green[200] } },
 
     // Squircle
     {
@@ -159,8 +159,8 @@ export const checkIconRecipe = recipe({
     height: ICON_SIZE,
   },
   variants: {
-    // Squircle/Circle: draw-in 애니메이션 사용
-    // Line: 아이콘 항상 표시, 색상만 전환
+    // Squircle/Circle: draw-in ?�니메이???�용
+    // Line: ?�이�???�� ?�시, ?�상�??�환
     animation: {
       draw: {},
       none: {},

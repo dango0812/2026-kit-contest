@@ -41,7 +41,7 @@ export const cardRecipe = recipe({
     // solid
     {
       variants: { color: 'primary', variant: 'solid' },
-      style: { backgroundColor: vars.color.blue[50] },
+      style: { backgroundColor: vars.color.green[50] },
     },
     {
       variants: { color: 'secondary', variant: 'solid' },
@@ -66,7 +66,7 @@ export const cardRecipe = recipe({
     // outline
     {
       variants: { color: 'primary', variant: 'outline' },
-      style: { backgroundColor: vars.color.white, border: `1.5px solid ${vars.color.blue[300]}` },
+      style: { backgroundColor: vars.color.white, border: `1.5px solid ${vars.color.green[300]}` },
     },
     {
       variants: { color: 'secondary', variant: 'outline' },

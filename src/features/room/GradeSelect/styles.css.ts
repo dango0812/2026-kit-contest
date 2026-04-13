@@ -41,7 +41,7 @@ const gradeButtonBase = style([
       backgroundColor: vars.color.grey[50],
     },
     ':focus-visible': {
-      outline: `2px solid ${vars.color.blue[500]}`,
+      outline: `2px solid ${vars.color.green[500]}`,
       outlineOffset: '2px',
     },
   },
@@ -52,10 +52,10 @@ export const gradeButton = gradeButtonBase;
 export const gradeButtonSelected = style([
   gradeButtonBase,
   {
-    borderColor: vars.color.blue[500],
-    backgroundColor: vars.color.blue[50],
+    borderColor: vars.color.green[500],
+    backgroundColor: vars.color.green[50],
     ':hover': {
-      backgroundColor: vars.color.blue[50],
+      backgroundColor: vars.color.green[50],
     },
   },
 ]);

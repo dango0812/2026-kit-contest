@@ -17,7 +17,7 @@ export const textFieldRecipe = recipe({
       color: vars.color.grey[400],
     },
     ':focus': {
-      borderColor: vars.color.blue[500],
+      borderColor: vars.color.green[500],
     },
     ':disabled': {
       opacity: 0.5,

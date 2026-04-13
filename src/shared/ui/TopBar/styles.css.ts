@@ -29,7 +29,7 @@ export const backButton = style([
       backgroundColor: vars.color.grey[100],
     },
     ':focus-visible': {
-      outline: `2px solid ${vars.color.blue[500]}`,
+      outline: `2px solid ${vars.color.green[500]}`,
       outlineOffset: '2px',
     },
   },

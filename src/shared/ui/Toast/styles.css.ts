@@ -37,7 +37,7 @@ export const toastRecipe = recipe({
   ],
   variants: {
     color: {
-      primary: { backgroundColor: vars.color.blue[500] },
+      primary: { backgroundColor: vars.color.green[500] },
       secondary: { backgroundColor: vars.color.grey[500] },
       success: { backgroundColor: vars.color.green[500] },
       error: { backgroundColor: vars.color.red[500] },
