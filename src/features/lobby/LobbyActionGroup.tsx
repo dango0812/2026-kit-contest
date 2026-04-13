@@ -4,11 +4,16 @@ import { Flex, Text } from '@shared/ui';
 
 import * as styles from './styles.css';
 
-export function LobbyActionGroup() {
+interface LobbyActionGroupProps {
+  onCreateRoom?: () => void;
+  onJoinRoom?: () => void;
+}
+
+export function LobbyActionGroup({ onCreateRoom, onJoinRoom }: LobbyActionGroupProps) {
   return (
     <Flex as="section" direction="column" gap="12" aria-label="게임 시작 옵션">
       {/* 수사대 만들기 */}
-      <button type="button" className={styles.primaryCard}>
+      <button type="button" className={styles.primaryCard} onClick={onCreateRoom}>
         <Flex direction="column" gap="6">
           <Text as="span" fontSize="subtitle2" fontWeight="bold" color="white">
             수사대 만들기
@@ -24,7 +29,7 @@ export function LobbyActionGroup() {
       </button>
 
       {/* 참여하기 */}
-      <button type="button" className={styles.outlineCard}>
+      <button type="button" className={styles.outlineCard} onClick={onJoinRoom}>
         <Flex direction="column" gap="6">
           <Text as="span" fontSize="subtitle2" fontWeight="bold">
             참여하기

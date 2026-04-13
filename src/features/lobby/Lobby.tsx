@@ -5,7 +5,12 @@ import { LobbyActionGroup } from './LobbyActionGroup';
 
 import * as styles from './styles.css';
 
-export function Lobby() {
+export interface LobbyProps {
+  onCreateRoom?: () => void;
+  onJoinRoom?: () => void;
+}
+
+export function Lobby({ onCreateRoom, onJoinRoom }: LobbyProps) {
   return (
     <Flex direction="column" justify="center" gap="40" className={styles.lobbyWrapper}>
       <Flex direction="column" gap="10">
@@ -17,7 +22,7 @@ export function Lobby() {
         </Text>
       </Flex>
 
-      <LobbyActionGroup />
+      <LobbyActionGroup onCreateRoom={onCreateRoom} onJoinRoom={onJoinRoom} />
     </Flex>
   );
 }
