@@ -6,6 +6,7 @@ export {
   findRoomByCode,
   joinFirestoreRoom,
   subscribeToRoom,
+  subscribeToWaitingRooms,
   updateFirestoreRoomMemberCount,
   updateFirestoreRoomStatus,
 } from './roomService';
