@@ -12,7 +12,7 @@ function TopBarRoot({ children }: PropsWithChildren) {
 function Back({ onBack }: { onBack: () => void }) {
   return (
     <button type="button" className={styles.backButton} onClick={onBack} aria-label="뒤로 가기">
-      <IconArrowLeft width={20} height={20} />
+      <IconArrowLeft width={20} height={20} aria-hidden="true" focusable="false" />
     </button>
   );
 }
