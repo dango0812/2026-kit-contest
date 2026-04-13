@@ -48,7 +48,7 @@ export function TextField({ size, label, error, id, className, ...rest }: TextFi
       />
 
       {hasError && (
-        <Text as="span" id={`${id}-error`} fontSize="caption" color="error" role="alert">
+        <Text as="span" id={`${id}-error`} fontSize="caption" color="error" aria-live="polite">
           {error}
         </Text>
       )}
