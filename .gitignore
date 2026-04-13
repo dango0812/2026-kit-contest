@@ -20,6 +20,9 @@ node_modules
 # misc
 .DS_Store
 *.local
+.env
+.env.local
+.env.*.local
 
 # debug
 npm-debug.log*
