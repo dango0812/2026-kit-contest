@@ -250,8 +250,8 @@ export const clueRevealCard = style([
     borderRadius: 'lg',
   }),
   {
-    background: `linear-gradient(135deg, ${vars.color.green[50]}, ${vars.color.teal[50]})`,
-    border: `1.5px solid ${vars.color.green[200]}`,
+    backgroundColor: vars.color.grey[50],
+    border: `1.5px solid ${vars.color.grey[200]}`,
   },
 ]);
 
@@ -300,8 +300,8 @@ export const conceptBox = style([
     borderRadius: 'lg',
   }),
   {
-    backgroundColor: vars.color.green[50],
-    border: `1.5px solid ${vars.color.green[200]}`,
+    backgroundColor: vars.color.grey[50],
+    border: `1.5px solid ${vars.color.grey[200]}`,
   },
 ]);
 

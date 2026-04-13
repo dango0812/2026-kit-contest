@@ -107,19 +107,19 @@ export function Investigation({ isHost, onFinish }: InvestigationProps) {
       return;
     }
 
-    const duration = 3000;
+    const duration = 2000;
     const end = Date.now() + duration;
 
     const frame = () => {
       confetti({
-        particleCount: 3,
+        particleCount: 2,
         angle: 60,
         spread: 55,
         origin: { x: 0, y: 0.7 },
         colors: ['#0BB56F', '#1DC883', '#FFD35C', '#FF9B04'],
       });
       confetti({
-        particleCount: 3,
+        particleCount: 2,
         angle: 120,
         spread: 55,
         origin: { x: 1, y: 0.7 },
@@ -135,7 +135,7 @@ export function Investigation({ isHost, onFinish }: InvestigationProps) {
     const timer = setTimeout(() => {
       setShowCelebration(false);
       setShowSummary(true);
-    }, 4000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [showCelebration]);
@@ -454,8 +454,8 @@ function MissionResult({
       {'conceptSummary' in mission && mission.conceptSummary ? (
         <div className={styles.conceptBox}>
           <Flex align="center" gap="6">
-            <IconLightbulb width={16} height={16} style={{ color: vars.color.green[600] }} aria-hidden="true" />
-            <Text fontSize="caption" fontWeight="semibold" color={vars.color.green[600]}>
+            <IconLightbulb width={16} height={16} style={{ color: vars.color.grey[600] }} aria-hidden="true" />
+            <Text fontSize="caption" fontWeight="semibold" color={vars.color.grey[600]}>
               핵심 개념 정리
             </Text>
           </Flex>
@@ -468,8 +468,8 @@ function MissionResult({
       {'clueForNext' in mission && mission.clueForNext ? (
         <div className={styles.clueRevealCard}>
           <Flex align="center" gap="6">
-            <IconClue width={16} height={16} style={{ color: vars.color.green[600] }} aria-hidden="true" />
-            <Text fontSize="caption" fontWeight="semibold" color={vars.color.green[600]}>
+            <IconClue width={16} height={16} style={{ color: vars.color.grey[600] }} aria-hidden="true" />
+            <Text fontSize="caption" fontWeight="semibold" color={vars.color.grey[600]}>
               다음 미션 단서
             </Text>
           </Flex>
@@ -585,6 +585,9 @@ function RoleShareMission({
           </Text>
         </div>
       ) : null}
+
+      {/* 호스트: 제출 버튼 없이 AI 힌트 아래 여백 */}
+      {isHost ? <div style={{ paddingBottom: '20px' }} /> : null}
     </>
   );
 }
