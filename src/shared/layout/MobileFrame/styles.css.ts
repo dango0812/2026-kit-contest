@@ -57,6 +57,11 @@ export const notch = style([
     borderBottomLeftRadius: '16px',
     borderBottomRightRadius: '16px',
     zIndex: 10,
+    '@media': {
+      '(max-width: 779px)': {
+        display: 'none',
+      },
+    },
   },
 ]);
 
