@@ -1,7 +1,7 @@
 import { sprinkles, vars } from '@shared/styles';
 import { style } from '@vanilla-extract/css';
 
-export const lobbyWrapper = sprinkles({ paddingTop: '20' });
+export const lobbyWrapper = style([sprinkles({ paddingTop: '20' }), { flex: 1 }]);
 
 export const textPreLine = style({
   whiteSpace: 'pre-line',

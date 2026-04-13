@@ -25,7 +25,7 @@ export function ScopeSelect({ topicId, gradeId, onBack, onSelect }: ScopeSelectP
   };
 
   return (
-    <Flex direction="column" gap="10">
+    <Flex direction="column" gap="10" style={{ flex: 1 }}>
       <TopBar>
         <TopBar.Back onBack={onBack} />
       </TopBar>

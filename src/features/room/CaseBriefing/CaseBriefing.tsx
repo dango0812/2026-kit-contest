@@ -67,10 +67,15 @@ export function CaseBriefing({ isHost, onStartMission }: CaseBriefingProps) {
       if (firestoreRoom.caseData) {
         setCaseData(firestoreRoom.caseData);
       }
+
+      // 호스트가 생성 실패로 status를 'waiting'으로 되돌린 경우, 참가자에게도 에러 표시
+      if (!isHost && firestoreRoom.status === 'waiting' && !firestoreRoom.caseData) {
+        setError('사건을 만드는 중 문제가 발생했어요');
+      }
     });
 
     return () => unsubscribe();
-  }, [firestoreDocId, storeApi]);
+  }, [firestoreDocId, storeApi, isHost]);
 
   const fetchCaseData = useCallback(async () => {
     if (!topicId || !gradeId || !scopeId || !firestoreDocId) {
