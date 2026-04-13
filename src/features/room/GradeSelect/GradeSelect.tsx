@@ -15,7 +15,7 @@ export function GradeSelect({ onBack, onSelect }: GradeSelectProps) {
   const [selected, setSelected] = useState<GradeId | null>(null);
 
   return (
-    <Flex direction="column" gap="10">
+    <Flex direction="column" gap="10" style={{ flex: 1 }}>
       <TopBar>
         <TopBar.Back onBack={onBack} />
       </TopBar>

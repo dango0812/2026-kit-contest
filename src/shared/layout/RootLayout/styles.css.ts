@@ -13,19 +13,6 @@ export const wrapper = style([
   },
 ]);
 
-export const mobileWrapper = style([
-  sprinkles({
-    display: 'flex',
-    flexDirection: 'column',
-  }),
-  {
-    minHeight: '100dvh',
-    maxWidth: '500px',
-    margin: '0 auto',
-    padding: '40px 20px 20px',
-  },
-]);
-
 export const tip = style([
   sprinkles({
     justifyContent: 'center',
