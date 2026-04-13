@@ -8,3 +8,11 @@ export const container = style([
     gap: '32',
   }),
 ]);
+
+export const rightWrapper = style({
+  '@media': {
+    '(max-width: 779px)': {
+      display: 'none',
+    },
+  },
+});

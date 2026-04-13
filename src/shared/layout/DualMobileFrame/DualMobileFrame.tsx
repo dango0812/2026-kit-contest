@@ -30,10 +30,12 @@ function Left({ header, children }: PropsWithChildren<{ header: string }>) {
 
 function Right({ header, children }: PropsWithChildren<{ header: string }>) {
   return (
-    <MobileFrame header={header}>
-      <MobileFrame.Notch />
-      <FrameContent>{children}</FrameContent>
-    </MobileFrame>
+    <div className={styles.rightWrapper}>
+      <MobileFrame header={header}>
+        <MobileFrame.Notch />
+        <FrameContent>{children}</FrameContent>
+      </MobileFrame>
+    </div>
   );
 }
 
