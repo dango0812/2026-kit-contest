@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { COLOR_OPTIONS, commonArgTypes } from '../config';
 import { Flex } from '../Flex';
 import { Text } from '../Text';
 import { Card } from './Card';
 
-const COLOR_OPTIONS = ['primary', 'secondary', 'success', 'error', 'warning', 'black'] as const;
 const VARIANT_OPTIONS = ['solid', 'outline'] as const;
 const ROUNDED_OPTIONS = ['none', 'sm', 'md', 'lg', 'xl', '2xl', 'full', 'frame'] as const;
 const SHADOW_OPTIONS = ['none', 'light', 'medium', 'strong'] as const;
@@ -14,10 +14,7 @@ const meta = {
   component: Card,
   tags: ['autodocs'],
   argTypes: {
-    color: {
-      control: 'select',
-      options: COLOR_OPTIONS,
-    },
+    color: commonArgTypes.color,
     variant: {
       control: 'select',
       options: VARIANT_OPTIONS,
@@ -30,7 +27,7 @@ const meta = {
       control: 'select',
       options: SHADOW_OPTIONS,
     },
-    className: { table: { disable: true } },
+    className: commonArgTypes.className,
   },
 } satisfies Meta<typeof Card>;
 
@@ -93,34 +90,6 @@ export const Colors: Story = {
           </Card>
         ))}
       </Flex>
-    </Flex>
-  ),
-};
-
-export const Rounded: Story = {
-  render: () => (
-    <Flex gap="12" flexWrap="wrap">
-      {ROUNDED_OPTIONS.map(rounded => (
-        <Card key={rounded} rounded={rounded} color="secondary" variant="solid" style={{ width: 160 }}>
-          <Text as="span" fontSize="body2" fontWeight="semibold">
-            rounded: {rounded}
-          </Text>
-        </Card>
-      ))}
-    </Flex>
-  ),
-};
-
-export const Shadow: Story = {
-  render: () => (
-    <Flex gap="20">
-      {SHADOW_OPTIONS.map(shadow => (
-        <Card key={shadow} shadow={shadow} color="secondary" variant="solid" rounded="lg" style={{ width: 160 }}>
-          <Text as="span" fontSize="body2" fontWeight="semibold">
-            shadow: {shadow}
-          </Text>
-        </Card>
-      ))}
     </Flex>
   ),
 };

@@ -11,6 +11,11 @@ export const loaderRecipe = recipe({
     animationTimingFunction: 'linear',
     animationIterationCount: 'infinite',
     animationDuration: '1000ms',
+    '@media': {
+      '(prefers-reduced-motion: reduce)': {
+        animation: 'none',
+      },
+    },
   },
   variants: {
     size: {
