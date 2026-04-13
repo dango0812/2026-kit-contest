@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { vars } from '@/shared/styles';
 
 import { Card } from '../Card';
+import { commonArgTypes } from '../config';
 import { Flex } from '../Flex';
 import { Text } from '../Text';
 import { Container, type MaxWidth as MaxWidthType } from './Container';
@@ -26,7 +27,7 @@ const meta = {
     as: { control: 'text' },
     maxWidth: { control: 'select', options: MAX_WIDTH_OPTIONS },
     fullWidth: { control: 'boolean' },
-    className: { table: { disable: true } },
+    className: commonArgTypes.className,
   },
   args: {
     maxWidth: 'lg',

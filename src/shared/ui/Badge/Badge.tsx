@@ -43,7 +43,7 @@ export function Badge({ color, size, variant, dot = false, className, children, 
       )}
       {...rest}
     >
-      {dot && <span className={styles.dotRecipe({ color, size, variant })} aria-hidden={true} />}
+      {dot && <span className={styles.dotRecipe({ color, size, variant })} aria-hidden="true" />}
       {children}
     </span>
   );

@@ -7,17 +7,19 @@ export const textPreLine = style({
   whiteSpace: 'pre-line',
 });
 
-export const cardBase = style({
-  all: 'unset',
-  display: 'block',
-  position: 'relative',
-  overflow: 'hidden',
-  boxSizing: 'border-box',
-  width: '100%',
-  padding: '20px',
-  borderRadius: vars.borderRadius.frame,
-  cursor: 'pointer',
-});
+export const cardBase = style([
+  sprinkles({
+    display: 'block',
+    position: 'relative',
+    overflow: 'hidden',
+    padding: '20',
+    borderRadius: 'frame',
+  }),
+  {
+    width: '100%',
+    textAlign: 'left',
+  },
+]);
 
 export const primaryCard = style([
   cardBase,

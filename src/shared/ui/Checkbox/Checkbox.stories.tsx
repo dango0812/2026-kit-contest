@@ -2,17 +2,16 @@ import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { COLOR_OPTIONS } from '../config';
 import { Flex } from '../Flex';
 import { Checkbox } from './Checkbox';
-
-const COLOR_OPTIONS = ['primary', 'secondary', 'success', 'error', 'warning', 'black'] as const;
 
 const meta = {
   title: 'Components/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
   argTypes: {
-    color: { control: 'select', options: COLOR_OPTIONS },
+    color: { control: 'select', options: [...COLOR_OPTIONS] },
     checked: { control: 'boolean' },
     disabled: { control: 'boolean' },
     onChange: { action: 'changed' },
@@ -44,33 +43,6 @@ export const Primary: Story = {
   ),
 };
 
-export const Squircle: Story = {
-  args: { children: null },
-  render: () => (
-    <Checkbox>
-      <Checkbox.Squircle />
-    </Checkbox>
-  ),
-};
-
-export const Circle: Story = {
-  args: { children: null },
-  render: () => (
-    <Checkbox>
-      <Checkbox.Circle />
-    </Checkbox>
-  ),
-};
-
-export const Line: Story = {
-  args: { children: null },
-  render: () => (
-    <Checkbox>
-      <Checkbox.Line />
-    </Checkbox>
-  ),
-};
-
 export const Colors: Story = {
   args: { children: null },
   render: () => (
@@ -96,32 +68,6 @@ export const Colors: Story = {
           </Checkbox>
         ))}
       </Flex>
-    </Flex>
-  ),
-};
-
-export const Disabled: Story = {
-  args: { children: null },
-  render: () => (
-    <Flex gap="20">
-      <Checkbox disabled>
-        <Checkbox.Squircle />
-      </Checkbox>
-      <Checkbox disabled checked>
-        <Checkbox.Squircle />
-      </Checkbox>
-      <Checkbox disabled>
-        <Checkbox.Circle />
-      </Checkbox>
-      <Checkbox disabled checked>
-        <Checkbox.Circle />
-      </Checkbox>
-      <Checkbox disabled>
-        <Checkbox.Line />
-      </Checkbox>
-      <Checkbox disabled checked>
-        <Checkbox.Line />
-      </Checkbox>
     </Flex>
   ),
 };

@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { COLOR_OPTIONS, commonArgTypes } from '../config';
 import { Flex } from '../Flex';
 import { Badge } from './Badge';
 
-const COLOR_OPTIONS = ['primary', 'secondary', 'success', 'error', 'warning', 'black'] as const;
-const SIZE_OPTIONS = ['small', 'medium', 'large'] as const;
 const VARIANT_OPTIONS = ['solid', 'subtle'] as const;
 
 const meta = {
@@ -12,12 +11,12 @@ const meta = {
   component: Badge,
   tags: ['autodocs'],
   argTypes: {
-    color: { control: 'select', options: COLOR_OPTIONS },
-    size: { control: 'select', options: SIZE_OPTIONS },
+    color: commonArgTypes.color,
+    size: commonArgTypes.size,
     variant: { control: 'radio', options: VARIANT_OPTIONS },
     dot: { control: 'boolean' },
     children: { control: 'text' },
-    className: { table: { disable: true } },
+    className: commonArgTypes.className,
   },
 } satisfies Meta<typeof Badge>;
 
@@ -73,53 +72,6 @@ export const Colors: Story = {
   ),
   args: {
     size: 'large',
-    children: '',
-  },
-};
-
-export const Sizes: Story = {
-  render: args => (
-    <Flex gap="8" align="center">
-      <Badge {...args} size="small">
-        Small
-      </Badge>
-      <Badge {...args} size="medium">
-        Medium
-      </Badge>
-      <Badge {...args} size="large">
-        Large
-      </Badge>
-    </Flex>
-  ),
-  args: {
-    color: 'primary',
-    variant: 'solid',
-    children: '',
-  },
-};
-
-export const Dot: Story = {
-  render: args => (
-    <Flex direction="column" gap="20">
-      <Flex gap="8" align="center">
-        {COLOR_OPTIONS.map(color => (
-          <Badge key={color} {...args} color={color} variant="solid">
-            {color}
-          </Badge>
-        ))}
-      </Flex>
-      <Flex gap="8" align="center">
-        {COLOR_OPTIONS.map(color => (
-          <Badge key={color} {...args} color={color} variant="subtle">
-            {color}
-          </Badge>
-        ))}
-      </Flex>
-    </Flex>
-  ),
-  args: {
-    size: 'large',
-    dot: true,
     children: '',
   },
 };

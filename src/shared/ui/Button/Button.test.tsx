@@ -49,17 +49,17 @@ describe('Button', () => {
   });
 
   it('loading 상태에서 버튼이 비활성화된다', () => {
-    render(<Button loading>로딩중</Button>);
+    render(<Button loading>로딩 중…</Button>);
     expect(screen.getByRole('button')).toBeDisabled();
   });
 
   it('loading 상태에서 aria-busy가 설정된다', () => {
-    render(<Button loading>로딩중</Button>);
+    render(<Button loading>로딩 중…</Button>);
     expect(screen.getByRole('button')).toHaveAttribute('aria-busy', 'true');
   });
 
   it('loading 상태에서 Loader 컴포넌트가 표시된다', () => {
-    render(<Button loading>로딩중</Button>);
+    render(<Button loading>로딩 중…</Button>);
     const btn = screen.getByRole('button');
     expect(btn.querySelector('svg')).toBeInTheDocument();
   });

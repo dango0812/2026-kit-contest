@@ -3,8 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '../Button';
+import { COLOR_OPTIONS } from '../config';
 import { Flex } from '../Flex';
-import type { Color } from '../types';
 import { Toast } from './Toast';
 import type { ToastPosition } from './types';
 
@@ -17,8 +17,6 @@ const POSITION_OPTIONS: ToastPosition[] = [
   'bottom-right',
 ];
 
-const COLOR_OPTIONS: Color[] = ['primary', 'secondary', 'success', 'error', 'warning', 'black'];
-
 const meta = {
   title: 'Components/Toast',
   component: Toast,
@@ -27,7 +25,7 @@ const meta = {
     isOpen: { control: 'boolean' },
     message: { control: 'text' },
     position: { control: 'select', options: POSITION_OPTIONS },
-    color: { control: 'select', options: COLOR_OPTIONS },
+    color: { control: 'select', options: [...COLOR_OPTIONS] },
     delay: { control: 'number' },
     onClose: { action: 'closed' },
   },
@@ -75,50 +73,5 @@ function ToastPlayground({ isOpen: initialIsOpen, message, position, color, dela
         onClose={() => setIsOpen(false)}
       />
     </Flex>
-  );
-}
-
-export const Colors: Story = {
-  args: { isOpen: false, message: '', onClose: () => {} },
-  render: () => <ToastColors />,
-};
-
-export const Positions: Story = {
-  args: { isOpen: false, message: '', onClose: () => {} },
-  render: () => <ToastPositions />,
-};
-
-function ToastColors() {
-  return (
-    <>
-      {COLOR_OPTIONS.map((color, index) => (
-        <Toast
-          key={color}
-          isOpen={true}
-          message={`color: ${color}`}
-          color={color}
-          position={POSITION_OPTIONS[index]}
-          delay={0}
-          onClose={() => {}}
-        />
-      ))}
-    </>
-  );
-}
-
-function ToastPositions() {
-  return (
-    <>
-      {POSITION_OPTIONS.map(position => (
-        <Toast
-          key={position}
-          isOpen={true}
-          message={`position: ${position}`}
-          position={position}
-          delay={0}
-          onClose={() => {}}
-        />
-      ))}
-    </>
   );
 }
