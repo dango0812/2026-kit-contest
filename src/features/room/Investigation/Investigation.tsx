@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { IconClue, IconImage, IconLightbulb, IconLock, IconPuzzle, IconSearch } from '@assets/icons';
 import detectiveSearch from '@assets/lotties/detective-search.json';
@@ -47,8 +47,6 @@ export function Investigation({ isHost, onFinish }: InvestigationProps) {
   const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
   const [wrongChoice, setWrongChoice] = useState<number | null>(null);
   const [wrongAttempts, setWrongAttempts] = useState(0);
-  const finishedRef = useRef(false);
-
   // 완료 시 화면 전환 상태
   const [showCelebration, setShowCelebration] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
@@ -77,11 +75,6 @@ export function Investigation({ isHost, onFinish }: InvestigationProps) {
       if (typeof store.setTotalWrongAttempts === 'function') {
         store.setTotalWrongAttempts(firestoreRoom.totalWrongAttempts ?? 0);
       }
-
-      if (firestoreRoom.status === 'finished' && !finishedRef.current) {
-        finishedRef.current = true;
-        setShowCelebration(true);
-      }
     });
     return () => unsubscribe();
   }, [firestoreDocId, storeApi]);
@@ -105,12 +98,7 @@ export function Investigation({ isHost, onFinish }: InvestigationProps) {
       return;
     }
 
-    const isLastMission = currentMission >= 2;
-    if (isLastMission) {
-      updateFirestoreRoomStatus(firestoreDocId, 'finished');
-    } else {
-      updateFirestoreRoomMission(firestoreDocId, currentMission + 1);
-    }
+    updateFirestoreRoomMission(firestoreDocId, currentMission + 1);
   }, [readyForNext.length, participants.length, missionSolved, firestoreDocId, isHost, currentMission]);
 
   // 축하 화면 — 폭죽 효과
@@ -227,6 +215,13 @@ export function Investigation({ isHost, onFinish }: InvestigationProps) {
     await addFirestoreRoomReadyUser(firestoreDocId, userId);
   };
 
+  const handleComplete = () => {
+    setShowCelebration(true);
+    if (isHost && firestoreDocId) {
+      updateFirestoreRoomStatus(firestoreDocId, 'finished');
+    }
+  };
+
   return (
     <div className={styles.wrapper}>
       {/* 진행률 바 */}
@@ -278,6 +273,7 @@ export function Investigation({ isHost, onFinish }: InvestigationProps) {
             totalCount={participants.length}
             isReady={isReady}
             onReady={handleReady}
+            onComplete={handleComplete}
           />
         ) : (
           <>
@@ -435,6 +431,7 @@ function MissionResult({
   totalCount,
   isReady,
   onReady,
+  onComplete,
 }: {
   mission: MissionRoleShare | MissionImageGuess | MissionFinalDeduction;
   isLastMission: boolean;
@@ -442,6 +439,7 @@ function MissionResult({
   totalCount: number;
   isReady: boolean;
   onReady: () => void;
+  onComplete: () => void;
 }) {
   return (
     <>
@@ -484,14 +482,20 @@ function MissionResult({
       ) : null}
 
       <div className={styles.footer}>
-        <Flex direction="column" gap="8" align="center">
-          <Text fontSize="caption" color={vars.color.grey[500]} aria-live="polite">
-            {readyCount}/{totalCount}명 준비 완료
-          </Text>
-          <Button fullWidth disabled={isReady} onClick={onReady}>
-            {isReady ? '팀원을 기다리는 중…' : isLastMission ? '수사 종료 !' : '다음 미션 준비 완료'}
+        {isLastMission ? (
+          <Button fullWidth onClick={onComplete}>
+            수사 종료 !
           </Button>
-        </Flex>
+        ) : (
+          <Flex direction="column" gap="8" align="center">
+            <Text fontSize="caption" color={vars.color.grey[500]} aria-live="polite">
+              {readyCount}/{totalCount}명 준비 완료
+            </Text>
+            <Button fullWidth disabled={isReady} onClick={onReady}>
+              {isReady ? '팀원을 기다리는 중…' : '다음 미션 준비 완료'}
+            </Button>
+          </Flex>
+        )}
       </div>
     </>
   );
