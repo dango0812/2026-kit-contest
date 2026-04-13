@@ -16,5 +16,11 @@ const segment = (len: number): string => {
  * generateCode(4, 3, ':'); // "1A3F:9B2D:5C8E"
  */
 export function generateCode(segmentLength = 3, segmentCount = 2, separator = '-'): string {
+  if (!Number.isInteger(segmentLength) || segmentLength <= 0) {
+    throw new Error('segmentLength는 1 이상의 정수여야 합니다.');
+  }
+  if (!Number.isInteger(segmentCount) || segmentCount <= 0) {
+    throw new Error('segmentCount는 1 이상의 정수여야 합니다.');
+  }
   return Array.from({ length: segmentCount }, () => segment(segmentLength)).join(separator);
 }
