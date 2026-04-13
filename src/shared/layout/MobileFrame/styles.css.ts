@@ -8,6 +8,13 @@ export const headerWrapper = style([
     alignItems: 'center',
     paddingBottom: '8',
   }),
+  {
+    '@media': {
+      '(max-width: 779px)': {
+        display: 'none',
+      },
+    },
+  },
 ]);
 
 export const frame = style([
@@ -24,6 +31,15 @@ export const frame = style([
     border: `6px solid ${vars.color.black}`,
     borderRadius: '40px',
     boxShadow: vars.shadow.md,
+    '@media': {
+      '(max-width: 779px)': {
+        width: '100%',
+        height: '100dvh',
+        border: 'none',
+        borderRadius: 0,
+        boxShadow: 'none',
+      },
+    },
   },
 ]);
 
@@ -41,6 +57,11 @@ export const notch = style([
     borderBottomLeftRadius: '16px',
     borderBottomRightRadius: '16px',
     zIndex: 10,
+    '@media': {
+      '(max-width: 779px)': {
+        display: 'none',
+      },
+    },
   },
 ]);
 

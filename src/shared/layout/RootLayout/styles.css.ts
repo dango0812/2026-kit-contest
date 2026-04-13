@@ -26,5 +26,10 @@ export const tip = style([
     right: 0,
     backgroundColor: vars.color.white,
     zIndex: 10,
+    '@media': {
+      '(max-width: 779px)': {
+        display: 'none',
+      },
+    },
   },
 ]);
