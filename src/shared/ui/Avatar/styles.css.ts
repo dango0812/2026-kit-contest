@@ -29,8 +29,8 @@ export const avatarRecipe = recipe({
     },
     variant: {
       filled: {
-        backgroundColor: vars.color.blue[100],
-        color: vars.color.blue[600],
+        backgroundColor: vars.color.green[100],
+        color: vars.color.green[600],
       },
       empty: {
         backgroundColor: vars.color.grey[200],

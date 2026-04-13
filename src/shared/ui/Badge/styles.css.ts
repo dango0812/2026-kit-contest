@@ -47,7 +47,7 @@ export const badgeRecipe = recipe({
     // solid
     {
       variants: { color: 'primary', variant: 'solid' },
-      style: { backgroundColor: vars.color.blue[500], color: vars.color.white },
+      style: { backgroundColor: vars.color.green[500], color: vars.color.white },
     },
     {
       variants: { color: 'secondary', variant: 'solid' },
@@ -72,7 +72,7 @@ export const badgeRecipe = recipe({
     // subtle
     {
       variants: { color: 'primary', variant: 'subtle' },
-      style: { backgroundColor: vars.color.blue[50], color: vars.color.blue[500] },
+      style: { backgroundColor: vars.color.green[50], color: vars.color.green[500] },
     },
     {
       variants: { color: 'secondary', variant: 'subtle' },
@@ -115,7 +115,7 @@ export const dotRecipe = recipe({
       large: { width: '10px', height: '10px' },
     },
     color: {
-      primary: { backgroundColor: vars.color.blue[500] },
+      primary: { backgroundColor: vars.color.green[500] },
       secondary: { backgroundColor: vars.color.grey[600] },
       success: { backgroundColor: vars.color.green[500] },
       error: { backgroundColor: vars.color.red[500] },
@@ -136,7 +136,7 @@ export const dotRecipe = recipe({
     { variants: { color: 'warning', variant: 'solid' }, style: { backgroundColor: 'rgba(255,255,255,0.85)' } },
     { variants: { color: 'black', variant: 'solid' }, style: { backgroundColor: 'rgba(255,255,255,0.85)' } },
     // subtle
-    { variants: { color: 'primary', variant: 'subtle' }, style: { backgroundColor: vars.color.blue[500] } },
+    { variants: { color: 'primary', variant: 'subtle' }, style: { backgroundColor: vars.color.green[500] } },
     { variants: { color: 'secondary', variant: 'subtle' }, style: { backgroundColor: vars.color.grey[600] } },
     { variants: { color: 'success', variant: 'subtle' }, style: { backgroundColor: vars.color.green[500] } },
     { variants: { color: 'error', variant: 'subtle' }, style: { backgroundColor: vars.color.red[500] } },

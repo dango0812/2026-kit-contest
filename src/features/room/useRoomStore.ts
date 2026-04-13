@@ -2,6 +2,7 @@
 
 import { getRandomAvatarUrl } from '@assets/avatars';
 import type { TopicId } from '@constants/topics';
+import type { CaseData } from '@database/geminiService';
 import { type StoreApi, useStore } from 'zustand';
 import { createStore } from 'zustand/vanilla';
 
@@ -19,6 +20,12 @@ interface Room {
   memberCount: number;
   participants: Participant[];
   firestoreDocId: string | null;
+  status: 'waiting' | 'playing' | 'finished' | 'failed';
+  caseData: CaseData | null;
+  currentMission: number;
+  missionSolved: boolean;
+  readyForNext: string[];
+  totalWrongAttempts: number;
 }
 
 // 방 생성 시 설정하는 학습 옵션
@@ -27,6 +34,7 @@ interface RoomConfig {
   gradeId: string | null;
   scopeId: string | null;
   customTopic: string | null;
+  difficulty: 'easy' | 'normal' | 'hard' | null;
 }
 
 /** 방의 전체 상태와 액션을 정의하는 스토어 타입 */
@@ -43,6 +51,8 @@ export interface RoomState {
   setGrade: (gradeId: string) => void;
   /** 학습 범위 설정 */
   setScope: (scopeId: string, customTopic?: string) => void;
+  /** 난이도 설정 */
+  setDifficulty: (difficulty: 'easy' | 'normal' | 'hard') => void;
   /** config의 일부 필드를 업데이트 */
   setConfig: (config: Partial<RoomConfig>) => void;
   /** 방을 생성하고 호스트를 참가자로 등록 */
@@ -55,6 +65,18 @@ export interface RoomState {
   joinRoom: (nickname: string) => void;
   /** Firestore 문서 ID를 설정 */
   setFirestoreDocId: (docId: string) => void;
+  /** 방 상태 변경 */
+  updateStatus: (status: Room['status']) => void;
+  /** 게임 데이터 저장 */
+  setCaseData: (data: CaseData) => void;
+  /** 현재 미션 인덱스 변경 */
+  setCurrentMission: (index: number) => void;
+  /** 미션 해결 여부 변경 */
+  setMissionSolved: (solved: boolean) => void;
+  /** 다음 미션 준비 완료 사용자 목록 동기화 */
+  setReadyForNext: (userIds: string[]) => void;
+  /** 총 오답 횟수 동기화 */
+  setTotalWrongAttempts: (count: number) => void;
   /** 모든 상태를 초기값으로 리셋 */
   reset: () => void;
 }
@@ -77,6 +99,7 @@ export function createRoomStore(): RoomStore {
       gradeId: null,
       scopeId: null,
       customTopic: null,
+      difficulty: null,
     },
     userId: generateUserId(),
 
@@ -94,6 +117,10 @@ export function createRoomStore(): RoomStore {
       }));
     },
 
+    setDifficulty: difficulty => {
+      set(state => ({ config: { ...state.config, difficulty } }));
+    },
+
     setConfig: (partial: Partial<RoomConfig>) => {
       set(state => ({ config: { ...state.config, ...partial } }));
     },
@@ -106,6 +133,12 @@ export function createRoomStore(): RoomStore {
           memberCount,
           participants: [{ id: userId, nickname: '나', avatarUrl: getRandomAvatarUrl(), isHost: true }],
           firestoreDocId: firestoreDocId ?? null,
+          status: 'waiting',
+          caseData: null,
+          currentMission: 0,
+          missionSolved: false,
+          readyForNext: [],
+          totalWrongAttempts: 0,
         },
       });
     },
@@ -156,10 +189,58 @@ export function createRoomStore(): RoomStore {
       set({ room: { ...room, firestoreDocId: docId } });
     },
 
+    updateStatus: status => {
+      const { room } = get();
+      if (!room) {
+        return;
+      }
+      set({ room: { ...room, status } });
+    },
+
+    setCaseData: data => {
+      const { room } = get();
+      if (!room) {
+        return;
+      }
+      set({ room: { ...room, caseData: data } });
+    },
+
+    setCurrentMission: index => {
+      const { room } = get();
+      if (!room) {
+        return;
+      }
+      set({ room: { ...room, currentMission: index } });
+    },
+
+    setMissionSolved: solved => {
+      const { room } = get();
+      if (!room) {
+        return;
+      }
+      set({ room: { ...room, missionSolved: solved } });
+    },
+
+    setReadyForNext: userIds => {
+      const { room } = get();
+      if (!room) {
+        return;
+      }
+      set({ room: { ...room, readyForNext: userIds } });
+    },
+
+    setTotalWrongAttempts: count => {
+      const { room } = get();
+      if (!room) {
+        return;
+      }
+      set({ room: { ...room, totalWrongAttempts: count } });
+    },
+
     reset: () =>
       set({
         room: null,
-        config: { topicId: null, gradeId: null, scopeId: null, customTopic: null },
+        config: { topicId: null, gradeId: null, scopeId: null, customTopic: null, difficulty: null },
         userId: generateUserId(),
       }),
   }));

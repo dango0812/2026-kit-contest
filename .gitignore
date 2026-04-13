@@ -31,3 +31,5 @@ yarn-error.log*
 
 
 .github/rules
+.vercel
+.env*.local

@@ -14,6 +14,7 @@ import {
 } from 'firebase/firestore';
 
 import { db } from './config';
+import type { CaseData } from './geminiService';
 
 /** Firestore에 저장되는 참가자 */
 export interface FirestoreParticipant {
@@ -32,8 +33,18 @@ export interface FirestoreRoom {
   gradeId: string;
   scopeId: string;
   customTopic: string | null;
+  difficulty: 'easy' | 'normal' | 'hard';
   participants: FirestoreParticipant[];
-  status: 'waiting' | 'playing' | 'finished';
+  status: 'waiting' | 'playing' | 'finished' | 'failed';
+  caseData?: CaseData | null;
+  /** 현재 진행 중인 미션 인덱스 (0~2) */
+  currentMission?: number;
+  /** 현재 미션이 해결되었는지 여부 */
+  missionSolved?: boolean;
+  /** 다음 미션 준비 완료한 사용자 ID 목록 */
+  readyForNext?: string[];
+  /** 총 오답 횟수 (전체 미션 누적) */
+  totalWrongAttempts?: number;
   createdAt: ReturnType<typeof serverTimestamp>;
 }
 
@@ -47,6 +58,7 @@ export async function createFirestoreRoom(data: {
   gradeId: string;
   scopeId: string;
   customTopic: string | null;
+  difficulty: 'easy' | 'normal' | 'hard';
   host: { id: string; nickname: string; avatarUrl: string };
 }): Promise<string> {
   const roomDoc: FirestoreRoom = {
@@ -56,6 +68,7 @@ export async function createFirestoreRoom(data: {
     gradeId: data.gradeId,
     scopeId: data.scopeId,
     customTopic: data.customTopic,
+    difficulty: data.difficulty,
     participants: [
       {
         id: data.host.id,
@@ -155,6 +168,53 @@ export async function updateFirestoreRoomMemberCount(docId: string, memberCount:
 export async function updateFirestoreRoomStatus(docId: string, status: FirestoreRoom['status']): Promise<void> {
   const roomRef = doc(db, ROOMS_COLLECTION, docId);
   await updateDoc(roomRef, { status });
+}
+
+/** 게임 데이터(브리핑 + 미션)를 저장합니다. */
+export async function updateFirestoreRoomCaseData(docId: string, caseData: CaseData): Promise<void> {
+  const roomRef = doc(db, ROOMS_COLLECTION, docId);
+  await updateDoc(roomRef, { caseData, currentMission: 0, totalWrongAttempts: 0 });
+}
+
+/** 현재 미션 인덱스를 변경하고 solved/ready 상태를 초기화합니다. */
+export async function updateFirestoreRoomMission(docId: string, missionIndex: number): Promise<void> {
+  const roomRef = doc(db, ROOMS_COLLECTION, docId);
+  await updateDoc(roomRef, { currentMission: missionIndex, missionSolved: false, readyForNext: [] });
+}
+
+/** 현재 미션을 해결 상태로 변경합니다. */
+export async function updateFirestoreRoomMissionSolved(docId: string): Promise<void> {
+  const roomRef = doc(db, ROOMS_COLLECTION, docId);
+  await updateDoc(roomRef, { missionSolved: true, readyForNext: [] });
+}
+
+/** 다음 미션 준비 완료 사용자를 추가합니다. */
+export async function addFirestoreRoomReadyUser(docId: string, userId: string): Promise<void> {
+  const { arrayUnion } = await import('firebase/firestore');
+  const roomRef = doc(db, ROOMS_COLLECTION, docId);
+  await updateDoc(roomRef, { readyForNext: arrayUnion(userId) });
+}
+
+/** 오답 횟수를 1 증가시키고, 한계에 도달하면 status를 'failed'로 변경합니다. */
+export async function incrementFirestoreWrongAttempts(docId: string, maxAttempts: number): Promise<void> {
+  const { runTransaction } = await import('firebase/firestore');
+  const roomRef = doc(db, ROOMS_COLLECTION, docId);
+
+  await runTransaction(db, async transaction => {
+    const roomSnap = await transaction.get(roomRef);
+    if (!roomSnap.exists()) {
+      return;
+    }
+
+    const data = roomSnap.data() as FirestoreRoom;
+    const newCount = (data.totalWrongAttempts ?? 0) + 1;
+
+    if (newCount >= maxAttempts) {
+      transaction.update(roomRef, { totalWrongAttempts: newCount, status: 'failed' });
+    } else {
+      transaction.update(roomRef, { totalWrongAttempts: newCount });
+    }
+  });
 }
 
 /** 방을 삭제합니다. */

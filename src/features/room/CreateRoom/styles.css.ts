@@ -67,7 +67,7 @@ export const memberButton = style([
     },
     selectors: {
       '&:has(input:focus-visible)': {
-        outline: `2px solid ${vars.color.blue[500]}`,
+        outline: `2px solid ${vars.color.green[500]}`,
         outlineOffset: '1px',
       },
       '&:has(input:disabled)': {
@@ -83,16 +83,16 @@ export const memberButton = style([
 export const memberButtonSelected = style([
   memberButton,
   {
-    borderColor: vars.color.blue[500],
-    backgroundColor: vars.color.blue[50],
-    color: vars.color.blue[600],
+    borderColor: vars.color.green[500],
+    backgroundColor: vars.color.green[50],
+    color: vars.color.green[600],
     fontWeight: vars.fontWeight.bold,
     ':hover': {
-      backgroundColor: vars.color.blue[50],
+      backgroundColor: vars.color.green[50],
     },
     selectors: {
       '&:has(input:disabled):hover': {
-        backgroundColor: vars.color.blue[50],
+        backgroundColor: vars.color.green[50],
       },
     },
   },
@@ -130,7 +130,7 @@ export const copyButton = style([
       color: vars.color.grey[700],
     },
     ':focus-visible': {
-      outline: `2px solid ${vars.color.blue[500]}`,
+      outline: `2px solid ${vars.color.green[500]}`,
       outlineOffset: '2px',
     },
   },

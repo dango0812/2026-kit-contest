@@ -24,13 +24,13 @@ export const cardBase = style([
 export const primaryCard = style([
   cardBase,
   {
-    backgroundColor: vars.color.blue[500],
+    backgroundColor: vars.color.green[500],
     transition: 'background-color 0.15s ease',
     ':hover': {
-      backgroundColor: vars.color.blue[600],
+      backgroundColor: vars.color.green[600],
     },
     ':focus-visible': {
-      outline: `2px solid ${vars.color.blue[300]}`,
+      outline: `2px solid ${vars.color.green[300]}`,
       outlineOffset: '2px',
     },
   },
@@ -47,7 +47,7 @@ export const outlineCard = style([
       backgroundColor: vars.color.grey[50],
     },
     ':focus-visible': {
-      outline: `2px solid ${vars.color.blue[500]}`,
+      outline: `2px solid ${vars.color.green[500]}`,
       outlineOffset: '2px',
     },
   },
@@ -96,7 +96,7 @@ export const iconCirclePrimary = style([
 export const iconCircleOutline = style([
   iconCircle,
   {
-    backgroundColor: vars.color.blue[500],
+    backgroundColor: vars.color.green[500],
     color: vars.color.white,
     '::before': {
       content: '""',
@@ -104,7 +104,7 @@ export const iconCircleOutline = style([
       width: '72px',
       height: '72px',
       borderRadius: vars.borderRadius.full,
-      border: `1.5px solid ${vars.color.blue[100]}`,
+      border: `1.5px solid ${vars.color.green[100]}`,
     },
     '::after': {
       content: '""',
@@ -112,7 +112,7 @@ export const iconCircleOutline = style([
       width: '96px',
       height: '96px',
       borderRadius: vars.borderRadius.full,
-      border: `1.5px solid ${vars.color.blue[50]}`,
+      border: `1.5px solid ${vars.color.green[50]}`,
     },
   },
 ]);

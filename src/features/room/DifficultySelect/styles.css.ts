@@ -1,31 +1,46 @@
 import { sprinkles, vars } from '@shared/styles';
 import { style } from '@vanilla-extract/css';
 
-export const scrollArea = style([
+export const wrapper = style([
   sprinkles({
     display: 'flex',
     flexDirection: 'column',
-    gap: '8',
   }),
   {
     flex: 1,
-    overflowY: 'auto',
-    padding: '20px 0px',
   },
 ]);
 
-const scopeItemBase = style([
+export const topSection = sprinkles({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '10',
+});
+
+export const textPreLine = style({
+  whiteSpace: 'pre-line',
+});
+
+export const grid = style([
+  sprinkles({
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12',
+    paddingTop: '24',
+  }),
+]);
+
+export const card = style([
   sprinkles({
     display: 'flex',
     flexDirection: 'column',
     gap: '4',
-    borderRadius: 'lg',
+    borderRadius: 'xl',
   }),
   {
-    padding: '14px 16px',
+    padding: '20px 16px',
     border: `1.5px solid ${vars.color.grey[200]}`,
     backgroundColor: vars.color.white,
-    cursor: 'pointer',
     textAlign: 'left',
     transition: 'border-color 0.15s ease, background-color 0.15s ease',
     ':hover': {
@@ -38,10 +53,8 @@ const scopeItemBase = style([
   },
 ]);
 
-export const scopeItem = scopeItemBase;
-
-export const scopeItemSelected = style([
-  scopeItemBase,
+export const cardSelected = style([
+  card,
   {
     borderColor: vars.color.green[500],
     backgroundColor: vars.color.green[50],

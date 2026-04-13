@@ -22,11 +22,11 @@ export const buttonRecipe = recipe({
   variants: {
     color: {
       primary: {
-        backgroundColor: vars.color.blue[500],
+        backgroundColor: vars.color.green[500],
         color: vars.color.white,
         selectors: {
-          [HOVERED]: { backgroundColor: vars.color.blue[600] },
-          [PRESSED]: { backgroundColor: vars.color.blue[700] },
+          [HOVERED]: { backgroundColor: vars.color.green[600] },
+          [PRESSED]: { backgroundColor: vars.color.green[700] },
         },
       },
       secondary: {

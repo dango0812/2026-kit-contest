@@ -50,7 +50,7 @@ export const topicCard = style([
       backgroundColor: vars.color.grey[50],
     },
     ':focus-visible': {
-      outline: `2px solid ${vars.color.blue[500]}`,
+      outline: `2px solid ${vars.color.green[500]}`,
       outlineOffset: '2px',
     },
   },
@@ -59,10 +59,10 @@ export const topicCard = style([
 export const topicCardSelected = style([
   topicCard,
   {
-    borderColor: vars.color.blue[500],
-    backgroundColor: vars.color.blue[50],
+    borderColor: vars.color.green[500],
+    backgroundColor: vars.color.green[50],
     ':hover': {
-      backgroundColor: vars.color.blue[50],
+      backgroundColor: vars.color.green[50],
     },
   },
 ]);
@@ -71,10 +71,11 @@ export const topicIcon = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  color: vars.color.blue[500],
+  color: vars.color.green[500],
 });
 
 export const submitButton = style({
   marginTop: 'auto',
+  paddingTop: '20px',
   paddingBottom: '12px',
 });
