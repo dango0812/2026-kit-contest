@@ -18,7 +18,7 @@ export function Lobby({ onCreateRoom, onJoinRoom }: LobbyProps) {
           KEG 수사대
         </Text>
         <Text as="p" fontSize="body1" lineHeight="large" color={vars.color.grey[600]} className={styles.textPreLine}>
-          {`주제를 선택하여 동료와 함께\n토론하며 사건을 해결해보세요.`}
+          {`주제를 선택하고 동료와 함께\n토론하며 사건을 해결해 보세요.`}
         </Text>
       </Flex>
 

@@ -15,6 +15,7 @@ export function Toast({
   position = 'top-center',
   color = 'primary',
   delay = 3000,
+  container,
 }: ToastProps) {
   useEffect(() => {
     if (!isOpen || delay === 0) {
@@ -37,8 +38,17 @@ export function Toast({
     }
   };
 
+  const portalTarget = container ?? document.body;
+  const positionStyle = container ? { position: 'absolute' as const } : undefined;
+
   return createPortal(
-    <div role="status" aria-live="polite" aria-atomic="true" className={styles.toastRecipe({ position, color })}>
+    <div
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      className={styles.toastRecipe({ position, color })}
+      style={positionStyle}
+    >
       <Text as="span" fontSize="body2">
         {message}
       </Text>
@@ -52,7 +62,7 @@ export function Toast({
         <IconClose aria-hidden />
       </button>
     </div>,
-    document.body,
+    portalTarget,
   );
 }
 

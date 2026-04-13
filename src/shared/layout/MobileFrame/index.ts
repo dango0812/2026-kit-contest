@@ -1,1 +1,1 @@
-export { MobileFrame } from './MobileFrame';
+export { MobileFrame, useFrameContainer } from './MobileFrame';

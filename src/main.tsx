@@ -1,7 +1,6 @@
 import { lazy, StrictMode } from 'react';
 
 import { ROUTES } from '@constants/routes';
-import { ToastProvider } from '@providers/ToastProvider';
 import { RootLayout } from '@shared/layout/RootLayout';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -32,9 +31,7 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   createRoot(rootElement).render(
     <StrictMode>
-      <ToastProvider>
-        <RouterProvider router={router} />
-      </ToastProvider>
+      <RouterProvider router={router} />
     </StrictMode>,
   );
 }

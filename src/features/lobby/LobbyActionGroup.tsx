@@ -19,7 +19,7 @@ export function LobbyActionGroup({ onCreateRoom, onJoinRoom }: LobbyActionGroupP
             수사대 만들기
           </Text>
           <Text as="span" fontSize="body2" color={vars.color.grey[100]} className={styles.textPreLine}>
-            {`사건 현장을 개설하고\n동료 요원들을 초대하세요.`}
+            {`사건 현장을 개설하고\n동료 요원들을 초대해 보세요.`}
           </Text>
         </Flex>
 
@@ -35,7 +35,7 @@ export function LobbyActionGroup({ onCreateRoom, onJoinRoom }: LobbyActionGroupP
             참여하기
           </Text>
           <Text as="span" fontSize="body2" color={vars.color.grey[600]} className={styles.textPreLine}>
-            {`참여 코드를 입력하고\n수사에 참여하세요.`}
+            {`참여 코드를 입력하고\n수사에 참여해 보세요.`}
           </Text>
         </Flex>
 

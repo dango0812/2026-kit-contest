@@ -1,12 +1,16 @@
-import { useEffect, useRef } from 'react';
+import { useCallback } from 'react';
 
 import { IconCopy } from '@assets/icons';
+import { getGradeLabel } from '@constants/grades';
+import { getTopicLabel } from '@constants/topics';
 import { useRoomStore } from '@features/room/useRoomStore';
+import { useBoolean } from '@shared/hooks/useBoolean';
 import { useCopyToClipboard } from '@shared/hooks/useCopyToClipboard';
 import { useToast } from '@shared/hooks/useToast';
 import { vars } from '@shared/styles';
-import { Avatar, Badge, Button, Flex, Text, TopBar } from '@shared/ui';
-import { generateCode } from '@shared/utils';
+import { Avatar, Badge, Button, Flex, Modal, Text, TopBar } from '@shared/ui';
+
+import { useFirestoreRoom } from './useFirestoreRoom';
 
 import * as styles from './styles.css';
 
@@ -15,27 +19,29 @@ type MemberCount = (typeof MEMBER_OPTIONS)[number];
 
 interface CreateRoomProps {
   onBack: () => void;
+  onLeave: () => void;
   isParticipant?: boolean;
 }
 
-export function CreateRoom({ onBack, isParticipant = false }: CreateRoomProps) {
-  const { room, createRoom, updateMemberCount } = useRoomStore();
+export function CreateRoom({ onBack, onLeave, isParticipant = false }: CreateRoomProps) {
+  const { room, config, userId } = useRoomStore();
   const { copy } = useCopyToClipboard();
   const showToast = useToast();
-  const initializedRef = useRef(false);
+  const leaveModal = useBoolean();
 
-  useEffect(() => {
-    if (!isParticipant && !room && !initializedRef.current) {
-      initializedRef.current = true;
-      createRoom(generateCode(), 2);
-    }
-  }, [isParticipant, room, createRoom]);
+  const { changeMemberCount, deleteRoom, leaveRoom } = useFirestoreRoom({
+    isParticipant,
+    onKicked: onLeave,
+  });
 
   const roomCode = room?.roomCode ?? '';
-
   const memberCount = (room?.memberCount ?? 2) as MemberCount;
   const participants = room?.participants ?? [];
-  const emptySlots = memberCount - participants.length;
+  const emptySlots = Math.max(0, memberCount - participants.length);
+
+  const topicLabel = config.topicId ? getTopicLabel(config.topicId) : '';
+  const gradeLabel = config.gradeId ? getGradeLabel(config.gradeId) : '';
+  const description = topicLabel && gradeLabel ? `${topicLabel} · ${gradeLabel}` : '';
 
   const handleCopy = async () => {
     const success = await copy(roomCode);
@@ -44,20 +50,38 @@ export function CreateRoom({ onBack, isParticipant = false }: CreateRoomProps) {
     }
   };
 
-  const handleMemberCountChange = (count: MemberCount) => {
-    updateMemberCount(count);
+  const handleBackClick = () => {
+    leaveModal.handleTrue();
   };
+
+  const handleLeaveConfirm = useCallback(async () => {
+    leaveModal.handleFalse();
+    if (isParticipant) {
+      await leaveRoom();
+      onBack();
+    } else {
+      await deleteRoom();
+      onLeave();
+    }
+  }, [isParticipant, leaveRoom, deleteRoom, onBack, onLeave, leaveModal]);
 
   return (
     <div className={styles.wrapper}>
       <TopBar>
-        <TopBar.Back onBack={onBack} />
+        <TopBar.Back onBack={handleBackClick} />
       </TopBar>
 
       <Flex direction="column" gap="20">
-        <Text as="h1" fontSize="h6" fontWeight="bold" role="heading">
-          수사대 모집 중
-        </Text>
+        <Flex direction="column" gap="4">
+          <Text as="h1" fontSize="h6" fontWeight="bold" role="heading">
+            수사대 모집 중
+          </Text>
+          {description ? (
+            <Text as="p" fontSize="body2" color={vars.color.grey[500]}>
+              {description}
+            </Text>
+          ) : null}
+        </Flex>
 
         {/* 인원 선택 */}
         <fieldset className={styles.memberFieldset}>
@@ -74,7 +98,7 @@ export function CreateRoom({ onBack, isParticipant = false }: CreateRoomProps) {
                   name="memberCount"
                   value={count}
                   checked={memberCount === count}
-                  onChange={() => handleMemberCountChange(count)}
+                  onChange={() => changeMemberCount(count)}
                   disabled={isParticipant}
                   className={styles.radioInput}
                 />
@@ -115,13 +139,7 @@ export function CreateRoom({ onBack, isParticipant = false }: CreateRoomProps) {
               <div key={p.id} className={styles.participantRow}>
                 <Avatar src={p.avatarUrl} />
                 <Text as="span" fontSize="body2" fontWeight="medium">
-                  {p.isHost
-                    ? isParticipant
-                      ? '방장'
-                      : `${p.nickname} (방장)`
-                    : isParticipant
-                      ? `${p.nickname} (나)`
-                      : p.nickname}
+                  {p.id === userId ? `${p.nickname} (나)` : p.isHost ? '방장' : p.nickname}
                 </Text>
               </div>
             ))}
@@ -144,6 +162,16 @@ export function CreateRoom({ onBack, isParticipant = false }: CreateRoomProps) {
           {isParticipant ? '방장의 시작을 기다리는 중…' : '수사 시작하기'}
         </Button>
       </div>
+
+      <Modal
+        isOpen={leaveModal.value}
+        title={isParticipant ? '방을 나갈까요?' : '수사를 종료할까요?'}
+        description={isParticipant ? '방을 나가면 수사대에서 제외돼요.' : '방장이 나가면 모든 참가자가 함께 퇴장돼요.'}
+        confirmLabel="나가기"
+        cancelLabel="계속하기"
+        onConfirm={handleLeaveConfirm}
+        onCancel={leaveModal.handleFalse}
+      />
     </div>
   );
 }

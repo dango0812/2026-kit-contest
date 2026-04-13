@@ -36,7 +36,7 @@ export const notch = style([
     left: '50%',
     transform: 'translateX(-50%)',
     width: '130px',
-    height: '28px',
+    height: '20px',
     backgroundColor: vars.color.black,
     borderBottomLeftRadius: '16px',
     borderBottomRightRadius: '16px',

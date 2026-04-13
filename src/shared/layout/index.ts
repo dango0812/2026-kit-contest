@@ -1,3 +1,3 @@
 export { DualMobileFrame } from './DualMobileFrame';
-export { MobileFrame } from './MobileFrame';
+export { MobileFrame, useFrameContainer } from './MobileFrame';
 export { RootLayout } from './RootLayout';

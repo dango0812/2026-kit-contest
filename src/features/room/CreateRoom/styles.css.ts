@@ -65,9 +65,17 @@ export const memberButton = style([
     ':hover': {
       backgroundColor: vars.color.grey[50],
     },
-    ':focus-within': {
-      outline: `2px solid ${vars.color.blue[500]}`,
-      outlineOffset: '2px',
+    selectors: {
+      '&:has(input:focus-visible)': {
+        outline: `2px solid ${vars.color.blue[500]}`,
+        outlineOffset: '1px',
+      },
+      '&:has(input:disabled)': {
+        cursor: 'not-allowed',
+      },
+      '&:has(input:disabled):hover': {
+        backgroundColor: 'initial',
+      },
     },
   },
 ]);
@@ -81,6 +89,11 @@ export const memberButtonSelected = style([
     fontWeight: vars.fontWeight.bold,
     ':hover': {
       backgroundColor: vars.color.blue[50],
+    },
+    selectors: {
+      '&:has(input:disabled):hover': {
+        backgroundColor: vars.color.blue[50],
+      },
     },
   },
 ]);
@@ -96,6 +109,7 @@ export const codeBox = style([
   {
     backgroundColor: vars.color.grey[50],
     border: `1.5px solid ${vars.color.grey[200]}`,
+    cursor: 'default',
   },
 ]);
 
@@ -137,5 +151,6 @@ export const participantRow = style([
 
 export const submitButton = style({
   marginTop: 'auto',
+  paddingTop: '20px',
   paddingBottom: '12px',
 });

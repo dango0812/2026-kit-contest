@@ -17,10 +17,10 @@ export default function NotFoundPage() {
 
         <Flex direction="column" align="center" gap="8">
           <Text as="h1" fontSize="h5" fontWeight="semibold">
-            페이지를 찾을 수 없습니다
+            페이지를 찾을 수 없어요
           </Text>
           <Text fontSize="body1" className={description}>
-            {`요청하신 페이지를 찾을 수 없습니다.\n입력하신 주소가 정확한지 다시 한번 확인해주세요.`}
+            {`요청하신 페이지를 찾을 수 없어요.\n입력하신 주소가 정확한지 다시 한번 확인해 주세요.`}
           </Text>
         </Flex>
         <Button color="primary" size="medium" onClick={() => navigate(ROUTES.HOME)}>
