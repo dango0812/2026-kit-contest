@@ -23,7 +23,7 @@ export const toastRecipe = recipe({
       padding: '14px 16px',
       color: vars.color.white,
       boxShadow: vars.shadow.md,
-      maxWidth: '380px',
+      maxWidth: 'calc(100% - 40px)',
       minWidth: '200px',
       animationDuration: '0.3s',
       animationTimingFunction: 'ease',

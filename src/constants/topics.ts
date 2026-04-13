@@ -14,3 +14,7 @@ export const TOPICS = [
 ] as const satisfies readonly Topic[];
 
 export type TopicId = (typeof TOPICS)[number]['id'];
+
+export function getTopicLabel(topicId: string): string {
+  return TOPICS.find(t => t.id === topicId)?.label ?? topicId;
+}

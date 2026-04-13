@@ -8,6 +8,7 @@ export * from './Container';
 export * from './Flex';
 export * from './Loader';
 export * from './Lottie';
+export * from './Modal';
 export * from './Text';
 export * from './TextField';
 export * from './Toast';

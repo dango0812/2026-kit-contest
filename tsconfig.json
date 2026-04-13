@@ -28,7 +28,8 @@
       "@shared/*": ["src/shared/*"],
       "@providers/*": ["src/providers/*"],
       "@constants/*": ["src/constants/*"],
-      "@assets/*": ["src/assets/*"]
+      "@assets/*": ["src/assets/*"],
+      "@database/*": ["src/database/*"]
     },
 
     /* Linting */

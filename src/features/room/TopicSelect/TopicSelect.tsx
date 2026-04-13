@@ -25,7 +25,7 @@ export function TopicSelect({ onBack, onSelect }: TopicSelectProps) {
           학습 주제 선택
         </Text>
         <Text as="p" fontSize="body1" lineHeight="large" color={vars.color.grey[600]} className={styles.textPreLine}>
-          {`AI가 선택한 주제에 맞는\n맞춤형 사건을 생성합니다.`}
+          {`AI가 선택한 주제에 맞춰\n사건을 만들어요.`}
         </Text>
       </Flex>
 

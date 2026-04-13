@@ -9,7 +9,11 @@ interface ToastState {
   options?: ToastOptions;
 }
 
-export function ToastProvider({ children }: PropsWithChildren) {
+interface ToastProviderProps extends PropsWithChildren {
+  container?: HTMLElement | null;
+}
+
+export function ToastProvider({ children, container }: ToastProviderProps) {
   const [state, setState] = useState<ToastState>({ isOpen: false, message: '' });
 
   const showToast = useMemo(() => {
@@ -25,7 +29,13 @@ export function ToastProvider({ children }: PropsWithChildren) {
   return (
     <ToastContext.Provider value={showToast}>
       {children}
-      <Toast isOpen={state.isOpen} message={state.message} onClose={showToast.close} {...state.options} />
+      <Toast
+        isOpen={state.isOpen}
+        message={state.message}
+        onClose={showToast.close}
+        container={container}
+        {...state.options}
+      />
     </ToastContext.Provider>
   );
 }

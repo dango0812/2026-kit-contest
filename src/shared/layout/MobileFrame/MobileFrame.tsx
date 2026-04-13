@@ -1,9 +1,15 @@
-import { type CSSProperties, type PropsWithChildren } from 'react';
+import { createContext, type CSSProperties, type PropsWithChildren, useContext, useState } from 'react';
 
 import { Flex, Text } from '@shared/ui';
 import clsx from 'clsx';
 
 import * as styles from './styles.css';
+
+const FrameContainerContext = createContext<HTMLElement | null>(null);
+
+export function useFrameContainer(): HTMLElement | null {
+  return useContext(FrameContainerContext);
+}
 
 export interface FrameProps extends PropsWithChildren {
   /**
@@ -24,6 +30,7 @@ export interface FrameProps extends PropsWithChildren {
 
 function MobileFrameBase({ children, header, width = 375, height = 700 }: FrameProps) {
   const frameStyle: CSSProperties = { width, height };
+  const [frameEl, setFrameEl] = useState<HTMLElement | null>(null);
 
   return (
     <Flex direction="column">
@@ -35,8 +42,8 @@ function MobileFrameBase({ children, header, width = 375, height = 700 }: FrameP
         </div>
       )}
 
-      <div className={styles.frame} style={frameStyle}>
-        {children}
+      <div className={styles.frame} style={frameStyle} ref={setFrameEl}>
+        <FrameContainerContext.Provider value={frameEl}>{children}</FrameContainerContext.Provider>
       </div>
     </Flex>
   );

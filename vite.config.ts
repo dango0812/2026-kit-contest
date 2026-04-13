@@ -15,6 +15,7 @@ export default defineConfig({
       '@providers': resolve(process.cwd(), 'src/providers'),
       '@constants': resolve(process.cwd(), 'src/constants'),
       '@assets': resolve(process.cwd(), 'src/assets'),
+      '@database': resolve(process.cwd(), 'src/database'),
     },
   },
   test: {

@@ -30,4 +30,9 @@ export interface ToastProps {
    * @default 3000
    */
   delay?: number;
+  /**
+   * 토스트를 렌더링할 컨테이너 요소입니다.
+   * 지정하지 않으면 document.body에 포탈됩니다.
+   */
+  container?: HTMLElement | null;
 }
