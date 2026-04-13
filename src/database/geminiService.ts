@@ -107,10 +107,26 @@ function getModel() {
   });
 }
 
-/** JSON 응답에서 마크다운 코드블록을 제거하고 파싱합니다. */
+/** JSON 응답에서 마크다운 코드블록·제어 문자를 제거하고 파싱합니다. */
 function parseJSON<T>(text: string): T {
   const cleaned = text.replace(/```json\n?|```\n?/g, '').trim();
-  return JSON.parse(cleaned) as T;
+
+  // Gemini가 JSON 문자열 값 내부에 이스케이프되지 않은 제어 문자를 포함할 수 있음
+  const sanitized = cleaned.replace(/"(?:[^"\\]|\\.)*"/g, match =>
+    // eslint-disable-next-line no-control-regex
+    match.replace(/[\x00-\x1F\x7F]/g, ch => {
+      const escapes: Record<string, string> = {
+        '\b': '\\b',
+        '\f': '\\f',
+        '\n': '\\n',
+        '\r': '\\r',
+        '\t': '\\t',
+      };
+      return escapes[ch] ?? '';
+    }),
+  );
+
+  return JSON.parse(sanitized) as T;
 }
 
 /**

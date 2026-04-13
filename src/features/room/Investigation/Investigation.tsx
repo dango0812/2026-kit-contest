@@ -320,7 +320,7 @@ export function Investigation({ isHost, onFinish }: InvestigationProps) {
 
             {/* 제출하기 — 맨 아래 */}
             {mission.type !== 'roleShare' || !isHost ? (
-              <div style={{ paddingBottom: '20px' }}>
+              <div style={{ paddingBottom: !isHost ? '20px' : undefined }}>
                 <Button
                   fullWidth
                   disabled={selectedChoice === null || wrongChoice !== null}
@@ -330,6 +330,9 @@ export function Investigation({ isHost, onFinish }: InvestigationProps) {
                 </Button>
               </div>
             ) : null}
+
+            {/* 호스트: 제출 버튼 없이 AI 힌트 아래 여백 */}
+            {isHost ? <div style={{ paddingBottom: '20px' }} /> : null}
           </>
         )}
       </div>
@@ -585,9 +588,6 @@ function RoleShareMission({
           </Text>
         </div>
       ) : null}
-
-      {/* 호스트: 제출 버튼 없이 AI 힌트 아래 여백 */}
-      {isHost ? <div style={{ paddingBottom: '20px' }} /> : null}
     </>
   );
 }
