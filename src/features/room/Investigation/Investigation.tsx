@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { IconClue, IconImage, IconLightbulb, IconLock, IconPuzzle, IconSearch } from '@assets/icons';
+import { IconCheck, IconClue, IconImage, IconLightbulb, IconLock, IconPuzzle, IconSearch } from '@assets/icons';
 import detectiveSearch from '@assets/lotties/detective-search.json';
 import type { CaseData, MissionFinalDeduction, MissionImageGuess, MissionRoleShare } from '@database/geminiService';
 import {
@@ -354,9 +354,7 @@ function CelebrationScreen() {
         <span className={clsx(styles.floatingDot, styles.floatingDot5)} aria-hidden="true" />
 
         <div className={styles.celebrationCircle}>
-          <svg width={40} height={40} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M9 12l2 2 4-4" stroke="white" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <IconCheck width={40} height={40} color="white" aria-hidden="true" />
         </div>
       </div>
 
