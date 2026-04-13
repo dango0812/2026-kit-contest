@@ -83,26 +83,35 @@ export function CaseBriefing({ isHost, onStartMission }: CaseBriefingProps) {
     generatingRef.current = true;
     setError(null);
 
-    try {
-      const topicLabel = getTopicLabel(topicId);
-      const gradeLabel = getGradeLabel(gradeId);
-      const { label: scopeLabel, description: scopeDescription } = getScopeInfo(topicId, gradeId, scopeId);
+    const MAX_RETRIES = 2;
 
-      const result = await generateCaseData({
-        topicLabel,
-        gradeLabel,
-        scopeLabel,
-        scopeDescription,
-      });
+    for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+      try {
+        const topicLabel = getTopicLabel(topicId);
+        const gradeLabel = getGradeLabel(gradeId);
+        const { label: scopeLabel, description: scopeDescription } = getScopeInfo(topicId, gradeId, scopeId);
 
-      // Firestore에 저장 → 구독을 통해 모든 화면에 동기화
-      await updateFirestoreRoomCaseData(firestoreDocId, result);
-    } catch {
-      setError('사건을 만드는 중 문제가 발생했어요');
-      await updateFirestoreRoomStatus(firestoreDocId, 'waiting');
-    } finally {
-      generatingRef.current = false;
+        const result = await generateCaseData({
+          topicLabel,
+          gradeLabel,
+          scopeLabel,
+          scopeDescription,
+        });
+
+        // Firestore에 저장 → 구독을 통해 모든 화면에 동기화
+        await updateFirestoreRoomCaseData(firestoreDocId, result);
+        generatingRef.current = false;
+        return;
+      } catch {
+        if (attempt < MAX_RETRIES) {
+          continue;
+        }
+        setError('사건을 만드는 중 문제가 발생했어요');
+        await updateFirestoreRoomStatus(firestoreDocId, 'waiting');
+      }
     }
+
+    generatingRef.current = false;
   }, [topicId, gradeId, scopeId, firestoreDocId]);
 
   // 호스트만 Gemini API 호출

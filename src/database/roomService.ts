@@ -237,3 +237,18 @@ export function subscribeToRoom(docId: string, callback: (room: FirestoreRoom | 
     }
   });
 }
+
+/** 대기 중인 방 목록을 실시간 구독합니다. */
+export function subscribeToWaitingRooms(
+  callback: (rooms: Array<{ docId: string; room: FirestoreRoom }>) => void,
+): Unsubscribe {
+  const q = query(collection(db, ROOMS_COLLECTION), where('status', '==', 'waiting'));
+
+  return onSnapshot(q, snapshot => {
+    const rooms = snapshot.docs.map(d => ({
+      docId: d.id,
+      room: d.data() as FirestoreRoom,
+    }));
+    callback(rooms);
+  });
+}

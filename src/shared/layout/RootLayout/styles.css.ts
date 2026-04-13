@@ -1,7 +1,6 @@
-import { breakpoints } from '@constants/breakpoints';
 import { style } from '@vanilla-extract/css';
 
-import { sprinkles } from '@/shared/styles';
+import { sprinkles, vars } from '@/shared/styles';
 
 export const wrapper = style([
   sprinkles({
@@ -14,22 +13,31 @@ export const wrapper = style([
   },
 ]);
 
-export const desktopContent = style({
-  '@media': {
-    [`(max-width: ${breakpoints.md}px)`]: {
-      display: 'none',
-    },
+export const mobileWrapper = style([
+  sprinkles({
+    display: 'flex',
+    flexDirection: 'column',
+  }),
+  {
+    minHeight: '100dvh',
+    maxWidth: '500px',
+    margin: '0 auto',
+    padding: '40px 20px 20px',
   },
-});
+]);
 
-export const mobileContent = style({
-  display: 'none',
-  '@media': {
-    [`(max-width: ${breakpoints.md}px)`]: {
-      display: 'flex',
-      textAlign: 'center',
-      whiteSpace: 'pre-line',
-      padding: '0px 20px',
-    },
+export const tip = style([
+  sprinkles({
+    justifyContent: 'center',
+    padding: '12',
+  }),
+  {
+    borderTop: `1px solid ${vars.color.grey[100]}`,
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: vars.color.white,
+    zIndex: 10,
   },
-});
+]);
