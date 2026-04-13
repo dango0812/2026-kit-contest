@@ -30,6 +30,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["2026-kit-contest", "workspace:."],\
           ["@eslint/js", "npm:9.39.4"],\
+          ["@google/generative-ai", "npm:0.24.1"],\
           ["@storybook/addon-a11y", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:10.3.5"],\
           ["@storybook/addon-docs", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:10.3.5"],\
           ["@storybook/addon-vitest", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:10.3.5"],\
@@ -39,6 +40,7 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/jest-dom", "npm:6.9.1"],\
           ["@testing-library/react", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:16.3.2"],\
           ["@testing-library/user-event", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:14.6.1"],\
+          ["@types/canvas-confetti", "npm:1.9.0"],\
           ["@types/node", "npm:22.19.17"],\
           ["@types/react", "npm:19.2.14"],\
           ["@types/react-dom", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:19.2.3"],\
@@ -50,6 +52,7 @@ const RAW_RUNTIME_STATE =
           ["@vanilla-extract/vite-plugin", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:5.2.2"],\
           ["@vitejs/plugin-react", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:4.7.0"],\
           ["@vitest/eslint-plugin", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:1.6.15"],\
+          ["canvas-confetti", "npm:1.9.4"],\
           ["clsx", "npm:2.1.1"],\
           ["eslint", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:9.39.4"],\
           ["eslint-config-prettier", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:10.1.8"],\
@@ -84,6 +87,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["2026-kit-contest", "workspace:."],\
           ["@eslint/js", "npm:9.39.4"],\
+          ["@google/generative-ai", "npm:0.24.1"],\
           ["@storybook/addon-a11y", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:10.3.5"],\
           ["@storybook/addon-docs", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:10.3.5"],\
           ["@storybook/addon-vitest", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:10.3.5"],\
@@ -93,6 +97,7 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/jest-dom", "npm:6.9.1"],\
           ["@testing-library/react", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:16.3.2"],\
           ["@testing-library/user-event", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:14.6.1"],\
+          ["@types/canvas-confetti", "npm:1.9.0"],\
           ["@types/node", "npm:22.19.17"],\
           ["@types/react", "npm:19.2.14"],\
           ["@types/react-dom", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:19.2.3"],\
@@ -104,6 +109,7 @@ const RAW_RUNTIME_STATE =
           ["@vanilla-extract/vite-plugin", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:5.2.2"],\
           ["@vitejs/plugin-react", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:4.7.0"],\
           ["@vitest/eslint-plugin", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:1.6.15"],\
+          ["canvas-confetti", "npm:1.9.4"],\
           ["clsx", "npm:2.1.1"],\
           ["eslint", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:9.39.4"],\
           ["eslint-config-prettier", "virtual:7a37bc79402d772ffb01eaba862fb523399317b31de6974fc95cf2ccdb59b7ef46d6880aad51828f3f1b4cb7a1e54898539addc943818db9c5782ebdab6d0813#npm:10.1.8"],\
@@ -2197,13 +2203,22 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@google/generative-ai", [\
+      ["npm:0.24.1", {\
+        "packageLocation": "./.yarn/cache/@google-generative-ai-npm-0.24.1-d9be3495d4-8da77fc648.zip/node_modules/@google/generative-ai/",\
+        "packageDependencies": [\
+          ["@google/generative-ai", "npm:0.24.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@grpc/grpc-js", [\
       ["npm:1.9.15", {\
         "packageLocation": "./.yarn/cache/@grpc-grpc-js-npm-1.9.15-ff69e71e58-5bd40e1b88.zip/node_modules/@grpc/grpc-js/",\
         "packageDependencies": [\
           ["@grpc/grpc-js", "npm:1.9.15"],\
           ["@grpc/proto-loader", "npm:0.7.15"],\
-          ["@types/node", "npm:25.6.0"]\
+          ["@types/node", "npm:22.19.17"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2406,7 +2421,7 @@ const RAW_RUNTIME_STATE =
           ["agent-base", "npm:7.1.4"],\
           ["http-proxy-agent", "npm:7.0.2"],\
           ["https-proxy-agent", "npm:7.0.6"],\
-          ["lru-cache", "npm:11.3.3"],\
+          ["lru-cache", "npm:11.3.5"],\
           ["socks-proxy-agent", "npm:8.0.5"]\
         ],\
         "linkType": "HARD"\
@@ -3758,6 +3773,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/canvas-confetti", [\
+      ["npm:1.9.0", {\
+        "packageLocation": "./.yarn/cache/@types-canvas-confetti-npm-1.9.0-128dcb43d0-ffe2c674d4.zip/node_modules/@types/canvas-confetti/",\
+        "packageDependencies": [\
+          ["@types/canvas-confetti", "npm:1.9.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/chai", [\
       ["npm:5.2.3", {\
         "packageLocation": "./.yarn/cache/@types-chai-npm-5.2.3-5f61dbddda-e0ef1de3b6.zip/node_modules/@types/chai/",\
@@ -3820,14 +3844,6 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/node", "npm:22.19.17"],\
           ["undici-types", "npm:6.21.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:25.6.0", {\
-        "packageLocation": "./.yarn/cache/@types-node-npm-25.6.0-429799b5e8-d2d2015630.zip/node_modules/@types/node/",\
-        "packageDependencies": [\
-          ["@types/node", "npm:25.6.0"],\
-          ["undici-types", "npm:7.19.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4855,7 +4871,7 @@ const RAW_RUNTIME_STATE =
           ["cacache", "npm:20.0.4"],\
           ["fs-minipass", "npm:3.0.3"],\
           ["glob", "npm:13.0.6"],\
-          ["lru-cache", "npm:11.3.3"],\
+          ["lru-cache", "npm:11.3.5"],\
           ["minipass", "npm:7.1.3"],\
           ["minipass-collect", "npm:2.0.1"],\
           ["minipass-flush", "npm:1.0.7"],\
@@ -4924,6 +4940,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001787-19e7f4d00f-93a6975afb.zip/node_modules/caniuse-lite/",\
         "packageDependencies": [\
           ["caniuse-lite", "npm:1.0.30001787"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["canvas-confetti", [\
+      ["npm:1.9.4", {\
+        "packageLocation": "./.yarn/cache/canvas-confetti-npm-1.9.4-72089dd1f5-08f11b5fa2.zip/node_modules/canvas-confetti/",\
+        "packageDependencies": [\
+          ["canvas-confetti", "npm:1.9.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7500,10 +7525,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:11.3.3", {\
-        "packageLocation": "./.yarn/cache/lru-cache-npm-11.3.3-50b1c940e1-f0053c0d6f.zip/node_modules/lru-cache/",\
+      ["npm:11.3.5", {\
+        "packageLocation": "./.yarn/cache/lru-cache-npm-11.3.5-461fa6ecab-5b54ef7b88.zip/node_modules/lru-cache/",\
         "packageDependencies": [\
-          ["lru-cache", "npm:11.3.3"]\
+          ["lru-cache", "npm:11.3.5"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -8081,7 +8106,7 @@ const RAW_RUNTIME_STATE =
       ["npm:2.0.2", {\
         "packageLocation": "./.yarn/cache/path-scurry-npm-2.0.2-f10aa6a77e-b35ad37cf6.zip/node_modules/path-scurry/",\
         "packageDependencies": [\
-          ["lru-cache", "npm:11.3.3"],\
+          ["lru-cache", "npm:11.3.5"],\
           ["minipass", "npm:7.1.3"],\
           ["path-scurry", "npm:2.0.2"]\
         ],\
@@ -8235,7 +8260,7 @@ const RAW_RUNTIME_STATE =
           ["@protobufjs/path", "npm:1.1.2"],\
           ["@protobufjs/pool", "npm:1.1.0"],\
           ["@protobufjs/utf8", "npm:1.1.0"],\
-          ["@types/node", "npm:25.6.0"],\
+          ["@types/node", "npm:22.19.17"],\
           ["long", "npm:5.3.2"],\
           ["protobufjs", "npm:7.5.4"]\
         ],\
@@ -9510,13 +9535,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/undici-types-npm-6.21.0-eb2b0ed56a-c01ed51829.zip/node_modules/undici-types/",\
         "packageDependencies": [\
           ["undici-types", "npm:6.21.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:7.19.2", {\
-        "packageLocation": "./.yarn/cache/undici-types-npm-7.19.2-93c792b6dd-7159f10546.zip/node_modules/undici-types/",\
-        "packageDependencies": [\
-          ["undici-types", "npm:7.19.2"]\
         ],\
         "linkType": "HARD"\
       }]\

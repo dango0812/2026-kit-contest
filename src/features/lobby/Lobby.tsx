@@ -15,7 +15,7 @@ export function Lobby({ onCreateRoom, onJoinRoom }: LobbyProps) {
     <Flex direction="column" justify="center" gap="40" className={styles.lobbyWrapper}>
       <Flex direction="column" gap="10">
         <Text as="h1" fontSize="h6" fontWeight="bold" role="heading">
-          KEG 수사대
+          KIT 수사대
         </Text>
         <Text as="p" fontSize="body1" lineHeight="large" color={vars.color.grey[600]} className={styles.textPreLine}>
           {`주제를 선택하고 동료와 함께\n토론하며 사건을 해결해 보세요.`}

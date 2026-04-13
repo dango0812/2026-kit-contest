@@ -20,18 +20,20 @@ type MemberCount = (typeof MEMBER_OPTIONS)[number];
 interface CreateRoomProps {
   onBack: () => void;
   onLeave: () => void;
+  onStartInvestigation: () => void;
   isParticipant?: boolean;
 }
 
-export function CreateRoom({ onBack, onLeave, isParticipant = false }: CreateRoomProps) {
+export function CreateRoom({ onBack, onLeave, onStartInvestigation, isParticipant = false }: CreateRoomProps) {
   const { room, config, userId } = useRoomStore();
   const { copy } = useCopyToClipboard();
   const showToast = useToast();
   const leaveModal = useBoolean();
 
-  const { changeMemberCount, deleteRoom, leaveRoom } = useFirestoreRoom({
+  const { changeMemberCount, deleteRoom, leaveRoom, startInvestigation } = useFirestoreRoom({
     isParticipant,
     onKicked: onLeave,
+    onStatusPlaying: onStartInvestigation,
   });
 
   const roomCode = room?.roomCode ?? '';
@@ -158,7 +160,7 @@ export function CreateRoom({ onBack, onLeave, isParticipant = false }: CreateRoo
       </Flex>
 
       <div className={styles.submitButton}>
-        <Button fullWidth disabled={isParticipant}>
+        <Button fullWidth disabled={isParticipant} onClick={startInvestigation}>
           {isParticipant ? '방장의 시작을 기다리는 중…' : '수사 시작하기'}
         </Button>
       </div>

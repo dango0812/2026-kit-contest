@@ -48,9 +48,6 @@ export function TopicSelect({ onBack, onSelect }: TopicSelectProps) {
               <Text as="span" fontSize="subtitle2" fontWeight="semibold">
                 {topic.label}
               </Text>
-              <Text as="span" fontSize="caption" color={vars.color.grey[500]}>
-                {topic.level}
-              </Text>
             </button>
           );
         })}

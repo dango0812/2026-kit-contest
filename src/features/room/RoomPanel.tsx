@@ -2,19 +2,31 @@ import { useState } from 'react';
 
 import type { TopicId } from '@constants/topics';
 import { Lobby } from '@features/lobby/Lobby';
+import { CaseBriefing } from '@features/room/CaseBriefing';
 import { CreateRoom } from '@features/room/CreateRoom';
+import { DifficultySelect } from '@features/room/DifficultySelect';
 import { GradeSelect } from '@features/room/GradeSelect';
+import { Investigation } from '@features/room/Investigation';
 import { JoinRoom } from '@features/room/JoinRoom';
 import { ScopeSelect } from '@features/room/ScopeSelect';
 import { TopicSelect } from '@features/room/TopicSelect';
 import { useRoomStore } from '@features/room/useRoomStore';
 
-type Step = 'lobby' | 'topicSelect' | 'gradeSelect' | 'scopeSelect' | 'createRoom' | 'joinRoom';
+type Step =
+  | 'lobby'
+  | 'topicSelect'
+  | 'gradeSelect'
+  | 'scopeSelect'
+  | 'difficultySelect'
+  | 'createRoom'
+  | 'joinRoom'
+  | 'caseBriefing'
+  | 'investigation';
 
 export function RoomPanel() {
   const [step, setStep] = useState<Step>('lobby');
   const [isParticipant, setIsParticipant] = useState(false);
-  const { config, setTopic, setGrade, setScope, createRoom, reset } = useRoomStore();
+  const { config, setTopic, setGrade, setScope, setDifficulty, createRoom, reset } = useRoomStore();
 
   const goBack = (to: Step) => () => setStep(to);
 
@@ -53,6 +65,16 @@ export function RoomPanel() {
           onBack={goBack('gradeSelect')}
           onSelect={scopeId => {
             setScope(scopeId);
+            setStep('difficultySelect');
+          }}
+        />
+      );
+    case 'difficultySelect':
+      return (
+        <DifficultySelect
+          onBack={goBack('scopeSelect')}
+          onSelect={difficulty => {
+            setDifficulty(difficulty);
             setStep('createRoom');
           }}
         />
@@ -60,8 +82,9 @@ export function RoomPanel() {
     case 'createRoom':
       return (
         <CreateRoom
-          onBack={goBack(isParticipant ? 'lobby' : 'scopeSelect')}
+          onBack={goBack(isParticipant ? 'lobby' : 'difficultySelect')}
           onLeave={handleLeave}
+          onStartInvestigation={() => setStep('caseBriefing')}
           isParticipant={isParticipant}
         />
       );
@@ -76,6 +99,10 @@ export function RoomPanel() {
           }}
         />
       );
+    case 'caseBriefing':
+      return <CaseBriefing isHost={!isParticipant} onStartMission={() => setStep('investigation')} />;
+    case 'investigation':
+      return <Investigation isHost={!isParticipant} onFinish={handleLeave} />;
     default:
       return (
         <Lobby
