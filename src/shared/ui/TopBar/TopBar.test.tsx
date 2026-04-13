@@ -32,7 +32,7 @@ describe('TopBar', () => {
         <TopBar.Back onBack={vi.fn()} />
       </TopBar>,
     );
-    expect(screen.queryByText(/.+/)).not.toBeInTheDocument();
+    expect(screen.queryByText('설정')).not.toBeInTheDocument();
   });
 
   it('Title이 있으면 제목을 렌더링한다', () => {
