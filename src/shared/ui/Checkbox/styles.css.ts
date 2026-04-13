@@ -159,8 +159,8 @@ export const checkIconRecipe = recipe({
     height: ICON_SIZE,
   },
   variants: {
-    // Squircle/Circle: draw-in ?�니메이???�용
-    // Line: ?�이�???�� ?�시, ?�상�??�환
+    // Squircle/Circle: draw-in 애니메이션 사용
+    // Line: 라인이 펼쳐지며 표시, 색상 전환
     animation: {
       draw: {},
       none: {},

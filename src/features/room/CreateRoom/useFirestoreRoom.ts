@@ -161,9 +161,13 @@ export function useFirestoreRoom({ isParticipant, onKicked, onStatusPlaying }: U
   const startInvestigation = useCallback(async () => {
     const { room } = storeApi.getState();
     if (room?.firestoreDocId) {
-      await updateFirestoreRoomStatus(room.firestoreDocId, 'playing');
+      try {
+        await updateFirestoreRoomStatus(room.firestoreDocId, 'playing');
+      } catch {
+        showToast('수사를 시작하지 못했어요', { color: 'error' });
+      }
     }
-  }, [storeApi]);
+  }, [storeApi, showToast]);
 
   // 멤버 수 변경 (호스트)
   const changeMemberCount = useCallback(
