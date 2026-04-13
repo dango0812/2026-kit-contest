@@ -22,6 +22,31 @@ export const memberGroup = sprinkles({
   gap: '10',
 });
 
+export const memberFieldset = style([
+  sprinkles({
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8',
+  }),
+  {
+    border: 'none',
+    padding: 0,
+    margin: 0,
+  },
+]);
+
+export const radioInput = style({
+  position: 'absolute',
+  width: '1px',
+  height: '1px',
+  padding: 0,
+  margin: '-1px',
+  overflow: 'hidden',
+  clip: 'rect(0, 0, 0, 0)',
+  whiteSpace: 'nowrap',
+  borderWidth: 0,
+});
+
 export const memberButton = style([
   sprinkles({
     display: 'inline-flex',
@@ -40,7 +65,7 @@ export const memberButton = style([
     ':hover': {
       backgroundColor: vars.color.grey[50],
     },
-    ':focus-visible': {
+    ':focus-within': {
       outline: `2px solid ${vars.color.blue[500]}`,
       outlineOffset: '2px',
     },

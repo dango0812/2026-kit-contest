@@ -60,26 +60,29 @@ export function CreateRoom({ onBack, isParticipant = false }: CreateRoomProps) {
         </Text>
 
         {/* 인원 선택 */}
-        <div className={styles.section}>
-          <Text as="span" fontSize="body2" fontWeight="medium" color={vars.color.grey[600]}>
-            인원 선택
-          </Text>
-          <div className={styles.memberGroup} role="radiogroup" aria-label="인원 선택">
+        <fieldset className={styles.memberFieldset}>
+          <legend>
+            <Text as="span" fontSize="body2" fontWeight="medium" color={vars.color.grey[600]}>
+              인원 선택
+            </Text>
+          </legend>
+          <div className={styles.memberGroup}>
             {MEMBER_OPTIONS.map(count => (
-              <button
-                key={count}
-                type="button"
-                role="radio"
-                aria-checked={memberCount === count}
-                className={memberCount === count ? styles.memberButtonSelected : styles.memberButton}
-                onClick={() => handleMemberCountChange(count)}
-                disabled={isParticipant}
-              >
+              <label key={count} className={memberCount === count ? styles.memberButtonSelected : styles.memberButton}>
+                <input
+                  type="radio"
+                  name="memberCount"
+                  value={count}
+                  checked={memberCount === count}
+                  onChange={() => handleMemberCountChange(count)}
+                  disabled={isParticipant}
+                  className={styles.radioInput}
+                />
                 {count}인
-              </button>
+              </label>
             ))}
           </div>
-        </div>
+        </fieldset>
 
         {/* 입장 코드 */}
         <div className={styles.section}>
@@ -91,7 +94,7 @@ export function CreateRoom({ onBack, isParticipant = false }: CreateRoomProps) {
               {roomCode}
             </Text>
             <button type="button" className={styles.copyButton} onClick={handleCopy} aria-label="입장 코드 복사">
-              <IconCopy width={18} height={18} />
+              <IconCopy width={18} height={18} aria-hidden="true" focusable="false" />
             </button>
           </div>
         </div>
